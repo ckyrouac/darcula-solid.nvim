@@ -24,49 +24,49 @@ local hsl = lush.hsl
 local bf, it, un = 'bold', 'italic', 'underline'
 
 -- Base colors
-local c0 = hsl(240, 1, 15)
-local c1 = c0.lighten(5)
-local c2 = c1.lighten(2)
-local c3 = c2.lighten(20).sa(10)
-local c4 = c3.lighten(10)
-local c5 = c4.lighten(20)
-local c6 = c5.lighten(70)
-local c7 = c6.lighten(80)
+local c0 = '#1d1e21'
+local c1 = '#282829'
+local c2 = '#2a2a2b'
+local c3 = '#323233'
+local c4 = '#373738'
+local c5 = '#414142'
+local c6 = '#6e6e70'
+local c7 = '#c6c6c9'
 
 -- Set base colors
-local bg      = c0    -- base background
-local overbg  = c1    -- other backgrounds
-local subtle  = c2    -- out-of-buffer elements
+local bg      = '#1d1e21'
+local overbg  = '#282829'
+local subtle  = '#2a2a2b'
 
-local fg      = hsl(210, 7, 82)
-local comment = hsl(0, 0, 54)    -- comments
-local folder  = hsl(202, 9, 57)
-local treebg  = hsl(220, 3, 19)
-local mid     = c2.lighten(10)   -- either foreground or background
-local faded   = fg.darken(45)    -- non-important text elements
-local pop     = c7
+local fg      = '#c3cad1'
+local comment = '#8a8a8a'
+local folder  = '#848c91'
+local treebg  = '#2f2f30'
+local mid     = '#2f2f30'
+local faded   = '#7e8387'
+local pop     = '#c6c6c9'
 
 -- Color palette
-local red     = hsl(1, 77, 59)
-local salmon  = hsl(10,  90, 70)
-local orange  = hsl(27, 61, 50)
-local yellow  = hsl(37, 100, 71)
+local red     = '#962523'
+local salmon  = '#b32d12'
+local orange  = '#805532'
+local yellow  = '#b57000'
 
-local green   = hsl(83, 27, 53)
-local teal    = hsl(150,  40, 50)
-local cyan    = hsl(180, 58, 38)
+local green   = '#798763'
+local teal    = '#4d8066'
+local cyan    = '#296161'
 
-local blue    = hsl(215, 80, 63).li(10)
-local purple  = hsl(279, 30, 62)
-local magenta = hsl(310,  40, 70)
+local blue    = '#235eb0'
+local purple  = '#8d6f9e'
+local magenta = '#b36ba7'
 
 
-return lush(function(injected_functions) 
+return lush(function(injected_functions)
 local sym = injected_functions.sym
 return {
-Normal       { fg=fg,      bg=bg };
+Normal       { fg='#c3cad1',      bg=bg };
 NormalFloat  { fg=fg,      bg=overbg };
-NormalNC     { fg=fg,      bg=bg.da(10) }; -- normal text in non-current windows
+NormalNC     { fg=fg,      bg='#1b1c1f' }; -- normal text in non-current windows
 
 Comment      { fg=comment,  gui=it };
 Whitespace   { fg=mid };                  -- 'listchars'
@@ -121,9 +121,9 @@ WarningMsg   { fg=red };                   -- warning messages
 Directory    { fg=blue };                  -- directory names (and other special names in listings)
 Title        { fg=blue };                  -- titles for output from ":set all" ":autocmd" etc.
 
-DiffAdd      { fg=green.da(20) };
+DiffAdd      { fg='#606b4f' };
 DiffDelete   { fg=red };
-DiffChange   { fg=yellow.da(20) };
+DiffChange   { fg='#915a00' };
 DiffText     { DiffChange, gui=un };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
