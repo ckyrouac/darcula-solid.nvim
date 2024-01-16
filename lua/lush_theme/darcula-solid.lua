@@ -16,7 +16,6 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 
 local lush = require 'lush'
-local hsl = lush.hsl
 
 --------------------------------------------------
 
@@ -39,7 +38,7 @@ local overbg  = '#282829'
 local subtle  = '#2a2a2b'
 
 local fg      = '#c3cad1'
-local comment = '#8a8a8a'
+local comment = '#7A7E85'
 local folder  = '#848c91'
 local treebg  = '#2f2f30'
 local mid     = '#2f2f30'
@@ -47,18 +46,26 @@ local faded   = '#7e8387'
 local pop     = '#c6c6c9'
 
 -- Color palette
-local red     = '#962523'
-local salmon  = '#b32d12'
-local orange  = '#805532'
-local yellow  = '#b57000'
+local red     = '#F75464'
+local salmon  = '#FA6675'
+local orange  = '#CF8E6D'
+-- local yellow  = '#D5B778'
+local yellow = '#AFBF7E' -- this is the actual yellow in goland, it's too green
+local gold    = '#B09D79'
 
-local green   = '#798763'
-local teal    = '#4d8066'
-local cyan    = '#296161'
+local green   = '#6AAB73'
+local teal    = '#293C40'
+local cyan    = '#6FAFBD'
 
-local blue    = '#235eb0'
-local purple  = '#8d6f9e'
-local magenta = '#b36ba7'
+local blue    = '#56A8F5'
+local purple  = '#B189F5'
+local magenta = '#C77DBB'
+
+-- my colors
+local dark_magenta = '#402f33'
+local gray2 = '#373b39'
+local gray3 = '#2b2d30'
+
 
 
 return lush(function(injected_functions)
@@ -70,7 +77,7 @@ NormalNC     { fg=fg,      bg='#1b1c1f' }; -- normal text in non-current windows
 
 Comment      { fg=comment,  gui=it };
 Whitespace   { fg=mid };                  -- 'listchars'
-Conceal      { fg=hsl(0, 0, 25) };
+Conceal      { fg='#404040' };
 NonText      { fg=treebg };              -- characters that don't exist in the text
 SpecialKey   { Whitespace };              -- Unprintable characters: text displayed differently from what it really is
 
@@ -103,7 +110,9 @@ TabLine      { bg=mid };                   -- not active tab page label
 TabLineFill  { bg=overbg };                -- where there are no labels
 TabLineSel   { bg=faded };                 -- active tab page label
 
-Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
+Search       { fg=fg, bg=gray2 };      -- Last search pattern highlighting (see 'hlsearch')
+CurSearch    { fg=fg, bg=dark_magenta };
+
 IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
 
@@ -177,7 +186,7 @@ Character      { fg=orange };
 String         { fg=green };
 
 Identifier     { fg=fg };
-Function       { fg=yellow };
+Function       { fg=fg };
 
 Statement      { fg=orange }; -- (preferred) any statement
 Conditional    { Statement };
@@ -275,14 +284,29 @@ sym "@text.uri"                 { fg=green, gui=it };      -- Any URI like a lin
 
 sym "@error"                    { fg=red };                -- syntax/parser errors.
 
-
 -- Other stuff
 HelpHyperTextJump {fg=yellow};
 markdownLinkText {fg=fg};
 
+-- go
+sym "@namespace.go" { fg=yellow };
+sym "@property.go" { fg=fg };
+sym "@field.go" { fg=fg };
+sym "@type.go" { fg=cyan };
+sym "@type.builtin.go" { fg=orange };
+sym "@method.call.go" { fg=gold };
+sym "@comment.go" { fg=comment };
+sym "@punctuation.delimiter.go" { fg=fg };
+sym "@method.go" { fg=blue };
+-- sym "@spell.go" { fg=comment };
+-- sym "@variable.go" { fg=yellow };
+
 -- NvimTree
 NvimTreeNormal       { bg=treebg, fg=fg };
-NvimTreeIndentMarker { fg=hsl(204, 3, 32) };
+NvimTreeIndentMarker { fg='#4f5152' };
 NvimTreeRootFolder   { fg=folder };
 NvimTreeFolderIcon   { fg=folder };
+
+-- Lua
+sym "@lsp.type.function.lua" {fg=fg}
 }end)
