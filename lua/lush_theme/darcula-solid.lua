@@ -19,18 +19,10 @@ local lush = require 'lush'
 
 --------------------------------------------------
 
+vim.o.fillchars='eob: '
+
 -- GUI options
 local bf, it, un = 'bold', 'italic', 'underline'
-
--- Base colors
-local c0 = '#1d1e21'
-local c1 = '#282829'
-local c2 = '#2a2a2b'
-local c3 = '#323233'
-local c4 = '#373738'
-local c5 = '#414142'
-local c6 = '#6e6e70'
-local c7 = '#c6c6c9'
 
 -- Set base colors
 local bg      = '#1e1f22'
@@ -66,41 +58,27 @@ local dark_magenta = '#402f33'
 local gray2 = '#373b39'
 local gray3 = '#2b2d30'
 
--- Set NvimTree current line highlight when focused
+-- local bufferline_tab_inactive_bg = '#222326'
+local bufferline_tab_inactive_bg = bg
+local bufferline_tab_active = bufferline_tab_inactive_bg
+
+-- Window focus/unfocus actions
 local function set_nvim_tree_highlight()
   vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
-    pattern = {"*NvimTree*"},
+    pattern = {"*"},
     callback = function()
-      vim.cmd [[ hi! NvimTreeCursorLine guibg=#2e436e ]]
+      vim.o.cursorline = true
     end
   })
 
   vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
-    pattern = {"*NvimTree*"},
+    pattern = {"*"},
     callback = function()
-      vim.cmd [[ hi! NvimTreeCursorLine guibg=#43454a ]]
+      vim.o.cursorline = false
     end
   })
 end
 set_nvim_tree_highlight()
-
--- Set SidebarNvim current line highlight when focused
-local function set_sidebar_highlight()
-  vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
-    pattern = {"*SidebarNvim*"},
-    callback = function()
-      vim.cmd [[ hi! SidebarNvimCursorLine guibg=#2e436e ]]
-    end
-  })
-
-  vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
-    pattern = {"*SidebarNvim*"},
-    callback = function()
-      vim.cmd [[ hi! SidebarNvimCursorLine guibg=#43454a ]]
-    end
-  })
-end
-set_sidebar_highlight()
 
 return lush(function(injected_functions)
 local sym = injected_functions.sym
@@ -112,7 +90,7 @@ NormalNC     { fg=fg,      bg=bg }; -- normal text in non-current windows
 Comment      { fg=comment,  gui=it };
 Whitespace   { fg=mid };                  -- 'listchars'
 Conceal      { fg='#404040' };
-NonText      { fg=gray3 };              -- characters that don't exist in the text
+NonText      { fg=bg };              -- characters that don't exist in the text
 SpecialKey   { Whitespace };              -- Unprintable characters: text displayed differently from what it really is
 
 
@@ -361,45 +339,15 @@ sym "NvimTreeRootFolder"   { fg=folder };
 sym "NvimTreeFolderIcon"   { fg=folder };
 sym "NvimTreeFolderName"   { fg=fg };
 sym "NvimTreeOpenedFolderName"   { fg=fg };
+sym "NvimTreeCursorLine"   { bg='#2e436e' };
 
 -- Sidebar
-sym "SidebarNvimNormal" {guibg=gray3, fg=fg};
-sym "SidebarNvimNormalBG" {guibg=gray3, fg=fg};
+sym "SidebarNvimNormal" {guibg=gray3, fg=fg, ctermbg=nil};
+sym "SidebarNvimNormalBG" {bg=gray3, fg=fg};
 sym "SidebarNvimNormalNC" {bg=gray3};
 sym "SidebarNvimNormalFloat" {bg=gray3};
-sym "SidebarNvimSectionTitle" {bg=gray3};
-sym "SidebarNvimSectionSeparator" {bg=gray3};
-sym "SidebarNvimSectionTitleSeparator" {bg=gray3};
-sym "SidebarNvimLabel" {bg=gray3};
-sym "SidebarNvimComment" {bg=gray3};
-sym "SidebarNvimLineNr" {bg=gray3};
-sym "SidebarNvimKeyword" {bg=gray3};
-sym "SidebarNvimGitStatusState" {bg=gray3};
-sym "SidebarNvimGitStatusFileName" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsError" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsWarn" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsInfo" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsHint" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsLineNumber" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsColNumber" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsFilename" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsTotalNumber" {bg=gray3};
-sym "SidebarNvimLspDiagnosticsMessage" {bg=gray3};
-sym "SidebarNvimTodoTag" {bg=gray3};
-sym "SidebarNvimTodoTotalNumber" {bg=gray3};
-sym "SidebarNvimTodoFilename" {bg=gray3};
-sym "SidebarNvimTodoLineNumber" {bg=gray3};
-sym "SidebarNvimTodoColNumber" {bg=gray3};
-sym "SidebarNvimDockerContainerStatusRunning" {bg=gray3};
-sym "SidebarNvimDockerContainerStatusExited" {bg=gray3};
-sym "SidebarNvimDockerContainerName" {bg=gray3};
-sym "SidebarNvimDatetimeClockName" {bg=gray3};
-sym "SidebarNvimDatetimeClockValue" {bg=gray3};
-sym "SidebarNvimBuffersActive" {bg=gray3};
-sym "SidebarNvimBuffersNumber" {bg=gray3};
-
 sym "SidebarNvimEndOfBuffer" {bg=gray3};
-sym "SidebarNvimCursorLine" {bg=gray3};
+sym "SidebarNvimCursorLine" {bg='#2e436e', ctermbg=nil};
 sym "SidebarNvimCursorLineNr" {bg=gray3};
 sym "SidebarNvimWinSeparator" {bg=gray3};
 sym "SidebarNvimStatusLine" {bg=gray3};
@@ -411,6 +359,52 @@ sym "GitSignsAdd" {fg=green};
 sym "GitSignsChange" {fg=blue};
 sym "GitSignsDelete" {fg=red};
 sym "GitSignsUntracked" {fg=yellow};
+
+-- bufferline
+ -- for some reason the background needs to be set in the bufferline config
+-- sym "BufferLineBackground" { bg=bufferline_tab_inactive_bg };sym "BufferLineTab" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineFill" { bg=bg };
+sym "BufferLineCloseButtonVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineBufferVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineBuffer" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineNumbersVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineNumbers" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDiagnostic" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDiagnosticVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineHintDiagnosticVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineHintDiagnostic" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineHintVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineHint" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineInfoVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineInfo" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineInfoDiagnosticVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineInfoDiagnostic" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineWarningDiagnosticVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineWarningDiagnostic" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineWarning" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineWarningVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineErrorDiagnosticVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineErrorDiagnostic" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineError" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineErrorVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineModifiedVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDuplicate" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDuplicateVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineSeparator" { bg=bufferline_tab_inactive_bg, fg=bufferline_tab_inactive_bg };
+sym "BufferLineSeparatorVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineIndicatorVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineIndicatorSelected" { bg=bufferline_tab_inactive_bg };
+sym "BufferLinePick" { bg=bufferline_tab_inactive_bg };
+sym "BufferLinePickVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineOffsetSeparator" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineTruncMarker" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineTabSeparator" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineTabClose" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineCloseButton" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineModified" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDevIconDefaultSelected" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDevIconDefaultInactive" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineLineGroupSeparator" { bg=bufferline_tab_inactive_bg };
 
 -- Lua
 sym "@lsp.type.function.lua" {fg=fg}
