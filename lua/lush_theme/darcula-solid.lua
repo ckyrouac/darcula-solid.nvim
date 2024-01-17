@@ -80,6 +80,45 @@ local function set_nvim_tree_highlight()
 end
 set_nvim_tree_highlight()
 
+-- Line number config
+local List=require('plenary.collections.py_list');
+local DisableLineNumberWindowList = List {"NvimTree", "SidebarNvim", "GitSigns*", "HoverHint"};
+
+local active_ns = vim.api.nvim_create_namespace('ActiveBuffer')
+local inactive_ns = vim.api.nvim_create_namespace('InactiveBuffer')
+
+vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
+  pattern = {"*"},
+  callback = function()
+    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+      vim.o.rnu = false
+      vim.o.number = false
+    else
+      vim.api.nvim_win_set_hl_ns(0, inactive_ns)
+      vim.api.nvim_set_hl(inactive_ns, 'LineNr', {fg='#7e8387'})
+
+      vim.o.rnu = true
+    end
+  end
+})
+
+vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
+  pattern = {"*"},
+  callback = function()
+    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+      vim.o.rnu = false
+      vim.o.number = false
+    else
+      -- keep the relative numbers, but hide theme
+      -- so the text doesn't move when switching panes
+      vim.o.rnu = true
+      vim.api.nvim_win_set_hl_ns(0, active_ns)
+      vim.api.nvim_set_hl(active_ns, 'LineNr', {fg='#1e1f22'})
+      -- vim.api.nvim_buf_add_highlight(0, active_ns, 'LineNr', 0, 0, -1)
+    end
+  end
+})
+
 return lush(function(injected_functions)
 local sym = injected_functions.sym
 return {
@@ -104,7 +143,7 @@ MatchParen   { fg=pop, bg='#43454a' };
 LineNr       { fg=faded };
 CursorLineNr { fg=fg };
 SignColumn   { LineNr };
-VertSplit    { fg=overbg,  bg=bg };    -- column separating vertically split windows
+VertSplit    { fg=gray3,  bg=gray3 };    -- column separating vertically split windows
 Folded       { fg=comment, bg=overbg };
 FoldColumn   { LineNr };
 
@@ -350,8 +389,8 @@ sym "SidebarNvimEndOfBuffer" {bg=gray3};
 sym "SidebarNvimCursorLine" {bg='#2e436e', ctermbg=nil};
 sym "SidebarNvimCursorLineNr" {bg=gray3};
 sym "SidebarNvimWinSeparator" {bg=gray3};
-sym "SidebarNvimStatusLine" {bg=gray3};
-sym "SidebarNvimStatuslineNC" {bg=gray3};
+sym "SidebarNvimStatusLine" {bg=gray3, fg=gray3};
+sym "SidebarNvimStatuslineNC" {bg=gray3, fg=gray3};
 sym "SidebarNvimSignColumn" {bg=gray3};
 
 -- GitSigns
