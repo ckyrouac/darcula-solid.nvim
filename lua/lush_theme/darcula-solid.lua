@@ -33,14 +33,13 @@ local c6 = '#6e6e70'
 local c7 = '#c6c6c9'
 
 -- Set base colors
-local bg      = '#1d1e21'
+local bg      = '#1e1f22'
 local overbg  = '#282829'
 local subtle  = '#2a2a2b'
 
 local fg      = '#c3cad1'
 local comment = '#7A7E85'
 local folder  = '#848c91'
-local treebg  = '#2f2f30'
 local mid     = '#2f2f30'
 local faded   = '#7e8387'
 local pop     = '#c6c6c9'
@@ -49,6 +48,7 @@ local pop     = '#c6c6c9'
 local red     = '#F75464'
 local salmon  = '#FA6675'
 local orange  = '#CF8E6D'
+local dark_orange = '#CC7832'
 -- local yellow  = '#D5B778'
 local yellow = '#AFBF7E' -- this is the actual yellow in goland, it's too green
 local gold    = '#B09D79'
@@ -73,12 +73,12 @@ local sym = injected_functions.sym
 return {
 Normal       { fg='#c3cad1',      bg=bg };
 NormalFloat  { fg=fg,      bg=overbg };
-NormalNC     { fg=fg,      bg='#1b1c1f' }; -- normal text in non-current windows
+NormalNC     { fg=fg,      bg=bg }; -- normal text in non-current windows
 
 Comment      { fg=comment,  gui=it };
 Whitespace   { fg=mid };                  -- 'listchars'
 Conceal      { fg='#404040' };
-NonText      { fg=treebg };              -- characters that don't exist in the text
+NonText      { fg=gray3 };              -- characters that don't exist in the text
 SpecialKey   { Whitespace };              -- Unprintable characters: text displayed differently from what it really is
 
 
@@ -293,16 +293,35 @@ sym "@namespace.go" { fg=yellow };
 sym "@property.go" { fg=fg };
 sym "@field.go" { fg=fg };
 sym "@type.go" { fg=cyan };
-sym "@type.builtin.go" { fg=orange };
+sym "@type.builtin.go" { fg=dark_orange };
 sym "@method.call.go" { fg=gold };
+sym "@lsp.type.function.go" { fg=gold };
 sym "@comment.go" { fg=comment };
 sym "@punctuation.delimiter.go" { fg=fg };
 sym "@method.go" { fg=blue };
--- sym "@spell.go" { fg=comment };
--- sym "@variable.go" { fg=yellow };
+sym "@lsp.type.namespace.go" { fg = yellow };
+sym "@lsp.type.type.go" { fg = blue };
+sym "@lsp.mod.defaultLibrary.go" { fg = dark_orange };
+sym "@lsp.mod.readonly.go" { fg = purple, gui=it };
+sym "@lsp.typemod.variable.defaultLibrary.go" { fg = dark_orange };
+
+-- bash
+sym "@function.call" { fg = dark_orange };
+sym "@function.builtin.bash" { fg = dark_orange };
+sym "@constant.bash" { fg = fg };
+sym "@function.bash" { fg = blue };
+sym "@punctuation.bracket.bash" { fg = orange };
+sym "@punctuation.special.bash" { fg = fg };
+sym "@number.bash" { fg = blue };
+sym "@comment.bash" { fg=comment };
+
+-- javascript
+-- python
+-- rust
+-- java
 
 -- NvimTree
-NvimTreeNormal       { bg=treebg, fg=fg };
+NvimTreeNormal       { bg=gray3, fg=fg };
 NvimTreeIndentMarker { fg='#4f5152' };
 NvimTreeRootFolder   { fg=folder };
 NvimTreeFolderIcon   { fg=folder };
