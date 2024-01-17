@@ -66,7 +66,33 @@ local dark_magenta = '#402f33'
 local gray2 = '#373b39'
 local gray3 = '#2b2d30'
 
+-- Set NvimTree current line highlight when focused
+local function set_nvim_tree_highlight()
+  vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
+    pattern = {"*NvimTree*"},
+    callback = function()
+      vim.cmd [[ hi! NvimTreeCursorLine guibg=#2e436e ]]
+    end
+  })
 
+  vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
+    pattern = {"*NvimTree*"},
+    callback = function()
+      vim.cmd [[ hi! NvimTreeCursorLine guibg=#43454a ]]
+    end
+  })
+end
+set_nvim_tree_highlight()
+
+local function set_sidebar_background()
+  vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
+    pattern = {"NvimTree", "SidebarNvim", "GitSigns*", "HoverHint"},
+    callback = function()
+      vim.cmd [[ hi! Normal guibg=#43454a ]]
+    end
+  })
+end
+set_sidebar_background()
 
 return lush(function(injected_functions)
 local sym = injected_functions.sym
@@ -86,11 +112,11 @@ Cursor       { fg=bg,      bg=fg };
 TermCursor   { fg=bg,      bg=fg };
 ColorColumn  { bg=overbg };
 CursorColumn { bg=subtle };
-CursorLine   { CursorColumn };
-MatchParen   { fg=pop,     bg=mid };
+CursorLine   { bg='#26282e' };
+MatchParen   { fg=pop, bg='#43454a' };
 
 LineNr       { fg=faded };
-CursorLineNr { fg=orange };
+CursorLineNr { fg=fg };
 SignColumn   { LineNr };
 VertSplit    { fg=overbg,  bg=bg };    -- column separating vertically split windows
 Folded       { fg=comment, bg=overbg };
@@ -116,7 +142,7 @@ CurSearch    { fg=fg, bg=dark_magenta };
 IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
 
-Visual       { bg=c2 };                    -- Visual mode selection
+Visual       { bg='#214283' };                    -- Visual mode selection
 VisualNOS    { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
 ModeMsg      { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")
@@ -321,10 +347,51 @@ sym "@comment.bash" { fg=comment };
 -- java
 
 -- NvimTree
-NvimTreeNormal       { bg=gray3, fg=fg };
-NvimTreeIndentMarker { fg='#4f5152' };
-NvimTreeRootFolder   { fg=folder };
-NvimTreeFolderIcon   { fg=folder };
+sym "NvimTreeNormal"       { bg=gray3, fg=fg };
+sym "NvimTreeIndentMarker" { fg='#4f5152' };
+sym "NvimTreeRootFolder"   { fg=folder };
+sym "NvimTreeFolderIcon"   { fg=folder };
+sym "NvimTreeFolderName"   { fg=fg };
+sym "NvimTreeOpenedFolderName"   { fg=fg };
+
+-- Sidebar
+sym "SidebarNvimNormal" {guibg=gray3, fg=fg};
+sym "SidebarNvimSectionTitle" {bg=gray3};
+sym "SidebarNvimSectionSeparator" {bg=gray3};
+sym "SidebarNvimSectionTitleSeparator" {bg=gray3};
+sym "SidebarNvimLabel" {bg=gray3};
+sym "SidebarNvimComment" {bg=gray3};
+sym "SidebarNvimLineNr" {bg=gray3};
+sym "SidebarNvimKeyword" {bg=gray3};
+sym "SidebarNvimGitStatusState" {bg=gray3};
+sym "SidebarNvimGitStatusFileName" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsError" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsWarn" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsInfo" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsHint" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsLineNumber" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsColNumber" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsFilename" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsTotalNumber" {bg=gray3};
+sym "SidebarNvimLspDiagnosticsMessage" {bg=gray3};
+sym "SidebarNvimTodoTag" {bg=gray3};
+sym "SidebarNvimTodoTotalNumber" {bg=gray3};
+sym "SidebarNvimTodoFilename" {bg=gray3};
+sym "SidebarNvimTodoLineNumber" {bg=gray3};
+sym "SidebarNvimTodoColNumber" {bg=gray3};
+sym "SidebarNvimDockerContainerStatusRunning" {bg=gray3};
+sym "SidebarNvimDockerContainerStatusExited" {bg=gray3};
+sym "SidebarNvimDockerContainerName" {bg=gray3};
+sym "SidebarNvimDatetimeClockName" {bg=gray3};
+sym "SidebarNvimDatetimeClockValue" {bg=gray3};
+sym "SidebarNvimBuffersActive" {bg=gray3};
+sym "SidebarNvimBuffersNumber" {bg=gray3};
+
+-- GitSigns
+sym "GitSignsAdd" {fg=green};
+sym "GitSignsChange" {fg=blue};
+sym "GitSignsDelete" {fg=red};
+sym "GitSignsUntracked" {fg=yellow};
 
 -- Lua
 sym "@lsp.type.function.lua" {fg=fg}
