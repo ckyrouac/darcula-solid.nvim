@@ -84,15 +84,23 @@ local function set_nvim_tree_highlight()
 end
 set_nvim_tree_highlight()
 
-local function set_sidebar_background()
+-- Set SidebarNvim current line highlight when focused
+local function set_sidebar_highlight()
   vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
-    pattern = {"NvimTree", "SidebarNvim", "GitSigns*", "HoverHint"},
+    pattern = {"*SidebarNvim*"},
     callback = function()
-      vim.cmd [[ hi! Normal guibg=#43454a ]]
+      vim.cmd [[ hi! SidebarNvimCursorLine guibg=#2e436e ]]
+    end
+  })
+
+  vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
+    pattern = {"*SidebarNvim*"},
+    callback = function()
+      vim.cmd [[ hi! SidebarNvimCursorLine guibg=#43454a ]]
     end
   })
 end
-set_sidebar_background()
+set_sidebar_highlight()
 
 return lush(function(injected_functions)
 local sym = injected_functions.sym
@@ -356,6 +364,9 @@ sym "NvimTreeOpenedFolderName"   { fg=fg };
 
 -- Sidebar
 sym "SidebarNvimNormal" {guibg=gray3, fg=fg};
+sym "SidebarNvimNormalBG" {guibg=gray3, fg=fg};
+sym "SidebarNvimNormalNC" {bg=gray3};
+sym "SidebarNvimNormalFloat" {bg=gray3};
 sym "SidebarNvimSectionTitle" {bg=gray3};
 sym "SidebarNvimSectionSeparator" {bg=gray3};
 sym "SidebarNvimSectionTitleSeparator" {bg=gray3};
@@ -386,6 +397,14 @@ sym "SidebarNvimDatetimeClockName" {bg=gray3};
 sym "SidebarNvimDatetimeClockValue" {bg=gray3};
 sym "SidebarNvimBuffersActive" {bg=gray3};
 sym "SidebarNvimBuffersNumber" {bg=gray3};
+
+sym "SidebarNvimEndOfBuffer" {bg=gray3};
+sym "SidebarNvimCursorLine" {bg=gray3};
+sym "SidebarNvimCursorLineNr" {bg=gray3};
+sym "SidebarNvimWinSeparator" {bg=gray3};
+sym "SidebarNvimStatusLine" {bg=gray3};
+sym "SidebarNvimStatuslineNC" {bg=gray3};
+sym "SidebarNvimSignColumn" {bg=gray3};
 
 -- GitSigns
 sym "GitSignsAdd" {fg=green};
