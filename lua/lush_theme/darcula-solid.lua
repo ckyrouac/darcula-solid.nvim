@@ -119,6 +119,12 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
   end
 })
 
+local signs = { Error = "󰅚", Warn = "󰀪", Hint = "💡", Info = "" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl })
+end
+
 return lush(function(injected_functions)
 local sym = injected_functions.sym
 return {
