@@ -96,8 +96,6 @@ vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
     if DisableLineNumberWindowList:contains(vim.bo.filetype) then
       vim.o.rnu = false
       vim.o.number = false
-      vim.o.signcolumn = 'no'
-      vim.o.foldcolumn = '0'
     else
       vim.o.number = true
       vim.o.rnu = true
@@ -114,8 +112,6 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
     if DisableLineNumberWindowList:contains(vim.bo.filetype) then
       vim.o.rnu = false
       vim.o.number = false
-      vim.o.signcolumn = 'no'
-      vim.o.foldcolumn = '0'
     else
       vim.o.number = false
       vim.o.rnu = false
