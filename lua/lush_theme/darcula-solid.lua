@@ -64,6 +64,8 @@ local bufferline_tab_active = bufferline_tab_inactive_bg
 
 -- Window focus/unfocus actions
 local function set_nvim_tree_highlight()
+  vim.cmd[[au FileType TelescopePrompt* setlocal nocursorline]]
+
   vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
     pattern = {"*"},
     callback = function()
@@ -84,8 +86,9 @@ set_nvim_tree_highlight()
 local List=require('plenary.collections.py_list');
 local DisableLineNumberWindowList = List {"NvimTree", "SidebarNvim", "GitSigns*", "HoverHint"};
 
-local active_ns = vim.api.nvim_create_namespace('ActiveBuffer')
-local inactive_ns = vim.api.nvim_create_namespace('InactiveBuffer')
+
+vim.o.signcolumn = 'no'
+vim.o.foldcolumn = '0'
 
 vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
   pattern = {"*"},
@@ -94,10 +97,8 @@ vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
       vim.o.rnu = false
       vim.o.number = false
       vim.o.signcolumn = 'no'
+      vim.o.foldcolumn = '0'
     else
-      vim.api.nvim_win_set_hl_ns(0, inactive_ns)
-      vim.api.nvim_set_hl(inactive_ns, 'LineNr', {fg='#7e8387'})
-
       vim.o.number = true
       vim.o.rnu = true
 
@@ -114,19 +115,37 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
       vim.o.rnu = false
       vim.o.number = false
       vim.o.signcolumn = 'no'
+      vim.o.foldcolumn = '0'
     else
-      -- keep the relative numbers, but hide theme
-      -- so the text doesn't move when switching panes
-      vim.o.number = true
-      vim.o.rnu = true
-      vim.api.nvim_win_set_hl_ns(0, active_ns)
-      vim.api.nvim_set_hl(active_ns, 'LineNr', {fg='#1e1f22'})
+      vim.o.number = false
+      vim.o.rnu = false
 
       vim.o.signcolumn = 'no'
-      vim.o.foldcolumn = '2'
+      vim.o.foldcolumn = '6'
     end
   end
 })
+
+-- -- Keeping this code here in case I want to show signs in inactive windows
+-- -- keep the relative numbers, but hide them
+-- -- so the text doesn't move when switching panes
+-- local active_ns = vim.api.nvim_create_namespace('ActiveBuffer')
+-- local inactive_ns = vim.api.nvim_create_namespace('InactiveBuffer')
+-- vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
+--   pattern = {"*"},
+--   callback = function()
+--     vim.api.nvim_win_set_hl_ns(0, inactive_ns)
+--     vim.api.nvim_set_hl(inactive_ns, 'LineNr', {fg='#7e8387'})
+--   end
+-- })
+--
+-- vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
+--   pattern = {"*"},
+--   callback = function()
+--     vim.api.nvim_win_set_hl_ns(0, active_ns)
+--     vim.api.nvim_set_hl(active_ns, 'LineNr', {fg='#1e1f22'})
+--   end
+-- })
 
 local signs = { Error = "󰅚", Warn = "󰀪", Hint = "💡", Info = "" }
 for type, icon in pairs(signs) do
@@ -138,7 +157,7 @@ return lush(function(injected_functions)
 local sym = injected_functions.sym
 return {
 sym "Normal"       { fg='#c3cad1',      bg=bg };
-sym "NormalFloat" { fg=fg,      bg=overbg };
+sym "NormalFloat" { fg=fg,      bg=bg };
 sym "NormalNC" { fg=fg,      bg=bg }; -- normal text in non-current windows
 
 sym "Comment" { fg=comment,  gui=it };
@@ -169,8 +188,8 @@ sym "PmenuThumb" { PmenuSel };                 -- Thumb of the scrollbar
 sym "WildMenu" { Pmenu };                    -- current match in 'wildmenu' completion
 sym "QuickFixLine" { fg=pop };                   -- Current |quickfix| item in the quickfix window
 
-sym "StatusLine" { bg=subtle };
-sym "StatusLineNC" { fg=faded,   bg=overbg };
+sym "StatusLine" { bg=bg, fg=bg };
+sym "StatusLineNC" { fg=faded,   bg=bg };
 
 sym "TabLine" { bg=mid };                   -- not active tab page label
 sym "TabLineFill" { bg=overbg };                -- where there are no labels
@@ -404,8 +423,11 @@ sym "SidebarNvimEndOfBuffer" {bg=bg};
 sym "SidebarNvimCursorLine" {bg='#2e436e', ctermbg=nil};
 sym "SidebarNvimCursorLineNr" {bg=bg};
 sym "SidebarNvimWinSeparator" {bg=bg};
-sym "SidebarNvimStatusLine" {bg=bg, fg=gray3};
-sym "SidebarNvimStatuslineNC" {bg=bg, fg=gray3};
+sym "SidebarNvimStatusLine" {bg=bg, fg=bg};
+sym "SidebarNvimStatuslineNC" {bg=bg, fg=faded};
+
+-- sym "SidebarNvimStatuslineNC" { bg=bg, fg=bg };
+-- sym "SidebarNvimStatuslineNC" { fg=faded,   bg=bg };
 sym "SidebarNvimSignColumn" {bg=bg};
 
 -- GitSigns
@@ -463,5 +485,13 @@ sym "BufferLineDevIconDefaultInactive" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineLineGroupSeparator" { bg=bufferline_tab_inactive_bg };
 
 -- Lua
-sym "@lsp.type.function.lua" {fg=fg}
+sym "@lsp.type.function.lua" {fg=fg};
+
+-- Telescope
+sym "TelescopePromptNormal" {fg=fg, bg=bg};
+sym "TelescopePreviewMatch" {fg=fg, bg=bg};
+sym "TelescopeBorder" {fg=faded, bg=bg};
+sym "TelescopePromptCounter" {bg=bg, fg=gold};
+sym "TelescopeResultsBorder" {fg=blue, bg=bg};
+sym "TelescopePromptPrefix" {fg=blue, bg=bg};
 }end)
