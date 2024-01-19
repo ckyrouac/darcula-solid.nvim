@@ -93,12 +93,16 @@ vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
     if DisableLineNumberWindowList:contains(vim.bo.filetype) then
       vim.o.rnu = false
       vim.o.number = false
+      vim.o.signcolumn = 'no'
     else
       vim.api.nvim_win_set_hl_ns(0, inactive_ns)
       vim.api.nvim_set_hl(inactive_ns, 'LineNr', {fg='#7e8387'})
 
       vim.o.number = true
       vim.o.rnu = true
+
+      vim.o.signcolumn = 'yes'
+      vim.o.foldcolumn = '0'
     end
   end
 })
@@ -109,6 +113,7 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
     if DisableLineNumberWindowList:contains(vim.bo.filetype) then
       vim.o.rnu = false
       vim.o.number = false
+      vim.o.signcolumn = 'no'
     else
       -- keep the relative numbers, but hide theme
       -- so the text doesn't move when switching panes
@@ -116,7 +121,9 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
       vim.o.rnu = true
       vim.api.nvim_win_set_hl_ns(0, active_ns)
       vim.api.nvim_set_hl(active_ns, 'LineNr', {fg='#1e1f22'})
-      -- vim.api.nvim_buf_add_highlight(0, active_ns, 'LineNr', 0, 0, -1)
+
+      vim.o.signcolumn = 'no'
+      vim.o.foldcolumn = '2'
     end
   end
 })
@@ -151,7 +158,7 @@ sym "MatchParen" { fg=pop, bg='#43454a' };
 sym "LineNr" { fg=faded };
 sym "CursorLineNr" { fg=fg };
 sym "SignColumn" { LineNr };
-sym "VertSplit" { fg=gray3,  bg=gray3 };    -- column separating vertically split windows
+sym "VertSplit" { fg=gray3,  bg=bg };    -- column separating vertically split windows
 sym "Folded" { fg=comment, bg=overbg };
 sym "FoldColumn" { LineNr };
 
