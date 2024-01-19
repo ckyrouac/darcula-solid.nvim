@@ -97,6 +97,7 @@ vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
       vim.api.nvim_win_set_hl_ns(0, inactive_ns)
       vim.api.nvim_set_hl(inactive_ns, 'LineNr', {fg='#7e8387'})
 
+      vim.o.number = true
       vim.o.rnu = true
     end
   end
@@ -111,6 +112,7 @@ vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
     else
       -- keep the relative numbers, but hide theme
       -- so the text doesn't move when switching panes
+      vim.o.number = true
       vim.o.rnu = true
       vim.api.nvim_win_set_hl_ns(0, active_ns)
       vim.api.nvim_set_hl(active_ns, 'LineNr', {fg='#1e1f22'})
@@ -128,99 +130,99 @@ end
 return lush(function(injected_functions)
 local sym = injected_functions.sym
 return {
-Normal       { fg='#c3cad1',      bg=bg };
-NormalFloat  { fg=fg,      bg=overbg };
-NormalNC     { fg=fg,      bg=bg }; -- normal text in non-current windows
+sym "Normal"       { fg='#c3cad1',      bg=bg };
+sym "NormalFloat" { fg=fg,      bg=overbg };
+sym "NormalNC" { fg=fg,      bg=bg }; -- normal text in non-current windows
 
-Comment      { fg=comment,  gui=it };
-Whitespace   { fg=mid };                  -- 'listchars'
-Conceal      { fg='#404040' };
-NonText      { fg=bg };              -- characters that don't exist in the text
-SpecialKey   { Whitespace };              -- Unprintable characters: text displayed differently from what it really is
+sym "Comment" { fg=comment,  gui=it };
+sym "Whitespace" { fg=mid };                  -- 'listchars'
+sym "Conceal" { fg='#404040' };
+sym "NonText" { fg=bg };              -- characters that don't exist in the text
+-- sym "SpecialKey" { Whitespace };              -- Unprintable characters: text displayed differently from what it really is
 
 
-Cursor       { fg=bg,      bg=fg };
-TermCursor   { fg=bg,      bg=fg };
-ColorColumn  { bg=overbg };
-CursorColumn { bg=subtle };
-CursorLine   { bg='#26282e' };
-MatchParen   { fg=pop, bg='#43454a' };
+sym "Cursor" { fg=bg,      bg=fg };
+sym "TermCursor" { fg=bg,      bg=fg };
+sym "ColorColumn" { bg=overbg };
+sym "CursorColumn" { bg=subtle };
+sym "CursorLine" { bg='#26282e' };
+sym "MatchParen" { fg=pop, bg='#43454a' };
 
-LineNr       { fg=faded };
-CursorLineNr { fg=fg };
-SignColumn   { LineNr };
-VertSplit    { fg=gray3,  bg=gray3 };    -- column separating vertically split windows
-Folded       { fg=comment, bg=overbg };
-FoldColumn   { LineNr };
+sym "LineNr" { fg=faded };
+sym "CursorLineNr" { fg=fg };
+sym "SignColumn" { LineNr };
+sym "VertSplit" { fg=gray3,  bg=gray3 };    -- column separating vertically split windows
+sym "Folded" { fg=comment, bg=overbg };
+sym "FoldColumn" { LineNr };
 
-Pmenu        { bg=overbg };                -- Popup menu normal item
-PmenuSel     { bg=mid };                   -- selected item
-PmenuSbar    { Pmenu };                    -- scrollbar
-PmenuThumb   { PmenuSel };                 -- Thumb of the scrollbar
-WildMenu     { Pmenu };                    -- current match in 'wildmenu' completion
-QuickFixLine { fg=pop };                   -- Current |quickfix| item in the quickfix window
+sym "Pmenu" { bg=overbg };                -- Popup menu normal item
+sym "PmenuSel" { bg=mid };                   -- selected item
+sym "PmenuSbar" { Pmenu };                    -- scrollbar
+sym "PmenuThumb" { PmenuSel };                 -- Thumb of the scrollbar
+sym "WildMenu" { Pmenu };                    -- current match in 'wildmenu' completion
+sym "QuickFixLine" { fg=pop };                   -- Current |quickfix| item in the quickfix window
 
-StatusLine   { bg=subtle };
-StatusLineNC { fg=faded,   bg=overbg };
+sym "StatusLine" { bg=subtle };
+sym "StatusLineNC" { fg=faded,   bg=overbg };
 
-TabLine      { bg=mid };                   -- not active tab page label
-TabLineFill  { bg=overbg };                -- where there are no labels
-TabLineSel   { bg=faded };                 -- active tab page label
+sym "TabLine" { bg=mid };                   -- not active tab page label
+sym "TabLineFill" { bg=overbg };                -- where there are no labels
+sym "TabLineSel" { bg=faded };                 -- active tab page label
 
-Search       { fg=fg, bg=gray2 };      -- Last search pattern highlighting (see 'hlsearch')
-CurSearch    { fg=fg, bg=dark_magenta };
+sym "Search" { fg=fg, bg=gray2 };      -- Last search pattern highlighting (see 'hlsearch')
+sym "CurSearch" { fg=fg, bg=dark_magenta };
 
-IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Substitute   { Search };                   -- |:substitute| replacement text highlighting
+sym "IncSearch" { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+sym "Substitute" { Search };                   -- |:substitute| replacement text highlighting
 
-Visual       { bg='#214283' };                    -- Visual mode selection
-VisualNOS    { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
+sym "Visual" { bg='#214283' };                    -- Visual mode selection
+sym "VisualNOS" { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
-ModeMsg      { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")
-MsgArea      { Normal };                   -- Area for messages and cmdline
-MsgSeparator { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
-MoreMsg      { fg=green };                 -- |more-prompt|
-Question     { fg=green };                 -- |hit-enter| prompt and yes/no questions
-ErrorMsg     { fg=red };                   -- error messages on the command line
-WarningMsg   { fg=red };                   -- warning messages
+sym "ModeMsg" { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")
+sym "MsgArea" { Normal };                   -- Area for messages and cmdline
+sym "MsgSeparator" { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
+sym "MoreMsg" { fg=green };                 -- |more-prompt|
+sym "Question" { fg=green };                 -- |hit-enter| prompt and yes/no questions
+sym "ErrorMsg" { fg=red };                   -- error messages on the command line
+sym "WarningMsg" { fg=red };                   -- warning messages
 
-Directory    { fg=blue };                  -- directory names (and other special names in listings)
-Title        { fg=blue };                  -- titles for output from ":set all" ":autocmd" etc.
+sym "Directory" { fg=blue };                  -- directory names (and other special names in listings)
+sym "Title" { fg=blue };                  -- titles for output from ":set all" ":autocmd" etc.
 
-DiffAdd      { fg='#606b4f' };
-DiffDelete   { fg=red };
-DiffChange   { fg='#915a00' };
-DiffText     { DiffChange, gui=un };
-DiffAdded    { DiffAdd };
-DiffRemoved  { DiffDelete };
+sym "DiffAdd" { fg='#606b4f' };
+sym "DiffDelete" { fg=red };
+sym "DiffChange" { fg='#915a00' };
+sym "DiffText" { DiffChange, gui=un };
+sym "DiffAdded" { DiffAdd };
+sym "DiffRemoved" { DiffDelete };
 
-SpellBad     { fg=red,     gui=un };
-SpellCap     { fg=magenta, gui=un };
-SpellLocal   { fg=orange,  gui=un };
-SpellRare    { fg=yellow,  gui=un };
+sym "SpellBad" { fg=red,     gui=un };
+sym "SpellCap" { fg=magenta, gui=un };
+sym "SpellLocal" { fg=orange,  gui=un };
+sym "SpellRare" { fg=yellow,  gui=un };
 
 
 
 ---- Language Server Protocol highlight groups ---------------------------------
 
-LspReferenceText                  { bg=mid };    -- highlighting "text" references
-LspReferenceRead                  { bg=mid };    -- highlighting "read" references
-LspReferenceWrite                 { bg=mid };    -- highlighting "write" references
+sym "LspReferenceText" { bg=mid };    -- highlighting "text" references
+sym "LspReferenceRead" { bg=mid };    -- highlighting "read" references
+sym "LspReferenceWrite" { bg=mid };    -- highlighting "write" references
 
 -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
-LspDiagnosticsDefaultError           { fg=red };
-LspDiagnosticsDefaultWarning         { fg=yellow };
-LspDiagnosticsDefaultInformation     { fg=fg };
-LspDiagnosticsDefaultHint            { fg=teal };
+sym "LspDiagnosticsDefaultError" { fg=red };
+sym "LspDiagnosticsDefaultWarning" { fg=yellow };
+sym "LspDiagnosticsDefaultInformation" { fg=fg };
+sym "LspDiagnosticsDefaultHint" { fg=teal };
 
 --LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
 --LspDiagnosticsVirtualTextWarning     { };    -- "Warning" diagnostic virtual text
 --LspDiagnosticsVirtualTextInformation { };    -- "Information" diagnostic virtual text
 --LspDiagnosticsVirtualTextHint        { };    -- "Hint" diagnostic virtual text
-LspDiagnosticsUnderlineError         { gui=un };    -- underline "Error" diagnostics
-LspDiagnosticsUnderlineWarning       { gui=un };    -- underline "Warning" diagnostics
-LspDiagnosticsUnderlineInformation   { gui=un };    -- underline "Information" diagnostics
-LspDiagnosticsUnderlineHint          { gui=un };    -- underline "Hint" diagnostics
+sym "LspDiagnosticsUnderlineError" { gui=un };    -- underline "Error" diagnostics
+sym "LspDiagnosticsUnderlineWarning" { gui=un };    -- underline "Warning" diagnostics
+sym "LspDiagnosticsUnderlineInformation" { gui=un };    -- underline "Information" diagnostics
+sym "LspDiagnosticsUnderlineHint" { gui=un };    -- underline "Hint" diagnostics
 --LspDiagnosticsFloatingError          { };    -- color "Error" diagnostic messages in diagnostics float
 --LspDiagnosticsFloatingWarning        { };    -- color "Warning" diagnostic messages in diagnostics float
 --LspDiagnosticsFloatingInformation    { };    -- color "Information" diagnostic messages in diagnostics float
@@ -235,48 +237,48 @@ LspDiagnosticsUnderlineHint          { gui=un };    -- underline "Hint" diagnost
 ---- Standard highlight groups -------------------------------------------------
 -- See :help group-name
 
-Constant       { fg=orange };
-Number         { fg=blue };
-Float          { Number };
-Boolean        { Constant };
-Character      { fg=orange };
-String         { fg=green };
+sym "Constant" { fg=orange };
+sym "Number" { fg=blue };
+sym "Float" { Number };
+sym "Boolean" { Constant };
+sym "Character" { fg=orange };
+sym "String" { fg=green };
 
-Identifier     { fg=fg };
-Function       { fg=fg };
+sym "Identifier" { fg=fg };
+sym "Function" { fg=fg };
 
-Statement      { fg=orange }; -- (preferred) any statement
-Conditional    { Statement };
-Repeat         { Statement };
-Label          { Statement };       -- case, default, etc.
-Operator       { fg=fg };
-Keyword        { Statement };    -- any other keyword
-Exception      { fg=red };
+sym "Statement" { fg=orange }; -- (preferred) any statement
+sym "Conditional" { Statement };
+sym "Repeat" { Statement };
+sym "Label" { Statement };       -- case, default, etc.
+sym "Operator" { fg=fg };
+sym "Keyword" { Statement };    -- any other keyword
+sym "Exception" { fg=red };
 
-PreProc        { fg=orange };    --  generic Preprocessor
-Include        { PreProc };    -- preprocessor #include
-Define         { PreProc };    -- preprocessor #define
-Macro          { PreProc };    -- same as Define
-PreCondit      { PreProc };    -- preprocessor #if, #else, #endif, etc.
+sym "PreProc" { fg=orange };    --  generic Preprocessor
+sym "Include" { PreProc };    -- preprocessor #include
+sym "Define" { PreProc };    -- preprocessor #define
+sym "Macro" { PreProc };    -- same as Define
+sym "PreCondit" { PreProc };    -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=fg };
-StorageClass   { fg=magenta };    -- static, register, volatile, etc.
-Structure      { fg=magenta };    -- struct, union, enum, etc.
-Typedef        { Type };
+sym "Type" { fg=fg };
+sym "StorageClass" { fg=magenta };    -- static, register, volatile, etc.
+sym "Structure" { fg=magenta };    -- struct, union, enum, etc.
+sym "Typedef" { Type };
 
-Special        { fg=orange };  -- (preferred) any special symbol
-SpecialChar    { Special };    -- special character in a constant
-Tag            { fg=yellow };  -- you can use CTRL-] on this
-Delimiter      { Special };    -- character that needs attention
-SpecialComment { Special };    -- special things inside a comment
-Debug          { Special };    -- debugging statements
+sym "Special" { fg=orange };  -- (preferred) any special symbol
+sym "SpecialChar" { Special };    -- special character in a constant
+sym "Tag" { fg=yellow };  -- you can use CTRL-] on this
+sym "Delimiter" { Special };    -- character that needs attention
+sym "SpecialComment" { Special };    -- special things inside a comment
+sym "Debug" { Special };    -- debugging statements
 
-Underlined { gui = un };
-Bold       { gui = bf };
-Italic     { gui = it };
-Ignore     { fg=faded };           --  left blank, hidden  |hl-Ignore|
-Error      { fg=red };             --  any erroneous construct
-Todo       { gui=bf };  --  anything that needs extra attention
+sym "Underlined" { gui = un };
+sym "Bold" { gui = bf };
+sym "Italic" { gui = it };
+sym "Ignore" { fg=faded };           --  left blank, hidden  |hl-Ignore|
+sym "Error" { fg=red };             --  any erroneous construct
+sym "Todo" { gui=bf };  --  anything that needs extra attention
 
 
 
@@ -378,7 +380,7 @@ sym "@comment.bash" { fg=comment };
 -- java
 
 -- NvimTree
-sym "NvimTreeNormal"       { bg=gray3, fg=fg };
+sym "NvimTreeNormal"       { bg=bg, fg=fg };
 sym "NvimTreeIndentMarker" { fg='#4f5152' };
 sym "NvimTreeRootFolder"   { fg=folder };
 sym "NvimTreeFolderIcon"   { fg=folder };
@@ -387,17 +389,17 @@ sym "NvimTreeOpenedFolderName"   { fg=fg };
 sym "NvimTreeCursorLine"   { bg='#2e436e' };
 
 -- Sidebar
-sym "SidebarNvimNormal" {guibg=gray3, fg=fg, ctermbg=nil};
-sym "SidebarNvimNormalBG" {bg=gray3, fg=fg};
-sym "SidebarNvimNormalNC" {bg=gray3};
-sym "SidebarNvimNormalFloat" {bg=gray3};
-sym "SidebarNvimEndOfBuffer" {bg=gray3};
+sym "SidebarNvimNormal" {guibg=bg, fg=fg, ctermbg=nil};
+sym "SidebarNvimNormalBG" {bg=bg, fg=fg};
+sym "SidebarNvimNormalNC" {bg=bg};
+sym "SidebarNvimNormalFloat" {bg=bg};
+sym "SidebarNvimEndOfBuffer" {bg=bg};
 sym "SidebarNvimCursorLine" {bg='#2e436e', ctermbg=nil};
-sym "SidebarNvimCursorLineNr" {bg=gray3};
-sym "SidebarNvimWinSeparator" {bg=gray3};
-sym "SidebarNvimStatusLine" {bg=gray3, fg=gray3};
-sym "SidebarNvimStatuslineNC" {bg=gray3, fg=gray3};
-sym "SidebarNvimSignColumn" {bg=gray3};
+sym "SidebarNvimCursorLineNr" {bg=bg};
+sym "SidebarNvimWinSeparator" {bg=bg};
+sym "SidebarNvimStatusLine" {bg=bg, fg=gray3};
+sym "SidebarNvimStatuslineNC" {bg=bg, fg=gray3};
+sym "SidebarNvimSignColumn" {bg=bg};
 
 -- GitSigns
 sym "GitSignsAdd" {fg=green};
@@ -433,19 +435,21 @@ sym "BufferLineErrorDiagnostic" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineError" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineErrorVisible" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineModifiedVisible" { bg=bufferline_tab_inactive_bg };
-sym "BufferLineDuplicate" { bg=bufferline_tab_inactive_bg };
-sym "BufferLineDuplicateVisible" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineDuplicate" { bg=bufferline_tab_inactive_bg, fg=comment };
+sym "BufferLineDuplicateVisible" { bg=bufferline_tab_inactive_bg, fg=comment };
+sym "BufferLineDuplicateSelected" { bg=bufferline_tab_inactive_bg, fg=fg };
 sym "BufferLineSeparator" { bg=bufferline_tab_inactive_bg, fg=bufferline_tab_inactive_bg };
 sym "BufferLineSeparatorVisible" { bg=bufferline_tab_inactive_bg };
-sym "BufferLineIndicatorVisible" { bg=bufferline_tab_inactive_bg };
-sym "BufferLineIndicatorSelected" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineIndicatorVisible" { bg=bufferline_tab_inactive_bg, fg=bufferline_tab_inactive_bg };
+sym "BufferLineIndicatorSelected" { bg=bufferline_tab_inactive_bg, fg=bufferline_tab_inactive_bg };
 sym "BufferLinePick" { bg=bufferline_tab_inactive_bg };
 sym "BufferLinePickVisible" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineOffsetSeparator" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineTruncMarker" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineTabSeparator" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineTabClose" { bg=bufferline_tab_inactive_bg };
-sym "BufferLineCloseButton" { bg=bufferline_tab_inactive_bg };
+sym "BufferLineCloseButton" { bg=bufferline_tab_inactive_bg, fg=comment };
+sym "BufferLineCloseButtonSelected" { bg=bufferline_tab_inactive_bg, fg=fg };
 sym "BufferLineModified" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineDevIconDefaultSelected" { bg=bufferline_tab_inactive_bg };
 sym "BufferLineDevIconDefaultInactive" { bg=bufferline_tab_inactive_bg };
