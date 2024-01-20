@@ -1,1 +1,1 @@
-vim.o.fillchars='eob: '
+vim.o.fillchars = "eob: "

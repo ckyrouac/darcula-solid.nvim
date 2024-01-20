@@ -1,39 +1,39 @@
-local List=require('plenary.collections.py_list');
-local DisableLineNumberWindowList = List {"NvimTree", "SidebarNvim", "GitSigns*", "HoverHint"};
+local List = require("plenary.collections.py_list")
+local DisableLineNumberWindowList = List({ "NvimTree", "SidebarNvim", "GitSigns*", "HoverHint" })
 
-vim.o.signcolumn = 'no'
-vim.o.foldcolumn = '0'
+vim.o.signcolumn = "no"
+vim.o.foldcolumn = "0"
 
-vim.api.nvim_create_autocmd({"BufEnter","FocusGained","WinEnter"}, {
-  pattern = {"*"},
-  callback = function()
-    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
-      vim.o.rnu = false
-      vim.o.number = false
-    else
-      vim.o.number = true
-      vim.o.rnu = true
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
+	pattern = { "*" },
+	callback = function()
+		if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+			vim.o.rnu = false
+			vim.o.number = false
+		else
+			vim.o.number = true
+			vim.o.rnu = true
 
-      vim.o.signcolumn = 'yes'
-      vim.o.foldcolumn = '0'
-    end
-  end
+			vim.o.signcolumn = "yes"
+			vim.o.foldcolumn = "0"
+		end
+	end,
 })
 
-vim.api.nvim_create_autocmd({"BufLeave","FocusLost","WinLeave"}, {
-  pattern = {"*"},
-  callback = function()
-    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
-      vim.o.rnu = false
-      vim.o.number = false
-    else
-      vim.o.number = false
-      vim.o.rnu = false
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "WinLeave" }, {
+	pattern = { "*" },
+	callback = function()
+		if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+			vim.o.rnu = false
+			vim.o.number = false
+		else
+			vim.o.number = false
+			vim.o.rnu = false
 
-      vim.o.signcolumn = 'no'
-      vim.o.foldcolumn = '6'
-    end
-  end
+			vim.o.signcolumn = "no"
+			vim.o.foldcolumn = "6"
+		end
+	end,
 })
 
 -- -- Keeping this code here in case I want to show signs in inactive windows
