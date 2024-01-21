@@ -1,6 +1,7 @@
 return {
 	-- Base colors
 	bg = "#1e1f22",
+	bg_alt = "#2b2d30",
 	overbg = "#282829",
 	subtle = "#2a2a2b",
 	fg = "#c3cad1",
@@ -28,5 +29,4 @@ return {
 	-- extra colors
 	dark_magenta = "#402f33",
 	gray2 = "#373b39",
-	gray3 = "#2b2d30",
 }

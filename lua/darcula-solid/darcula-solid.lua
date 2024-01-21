@@ -1,10 +1,10 @@
 local lush = require("lush")
-local colors = require("lush_theme/colors")
-require("lush_theme/cursor")
-require("lush_theme/diagnostics")
-require("lush_theme/line-numbers")
-require("lush_theme/options")
-require("lush_theme/terminal")
+local colors = require("darcula-solid/colors")
+require("darcula-solid/cursor")
+require("darcula-solid/diagnostics")
+require("darcula-solid/line-numbers")
+require("darcula-solid/options")
+require("darcula-solid/terminal")
 
 -- GUI options
 local bf, it, un = "bold", "italic", "underline"
@@ -32,7 +32,7 @@ return lush(function(injected_functions)
 		sym("LineNr")({ fg = colors.faded }),
 		sym("CursorLineNr")({ fg = colors.fg }),
 		sym("SignColumn")({ sym("LineNr") }),
-		sym("VertSplit")({ fg = colors.gray3, bg = colors.bg }), -- column separating vertically split windows
+		sym("VertSplit")({ fg = colors.bg_alt, bg = colors.bg }), -- column separating vertically split windows
 		sym("Folded")({ fg = colors.comment, bg = colors.overbg }),
 		sym("FoldColumn")({ sym("LineNr") }),
 
