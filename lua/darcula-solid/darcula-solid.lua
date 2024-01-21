@@ -342,6 +342,9 @@ return lush(function(injected_functions)
 		sym("TelescopeBorder")({ fg = colors.faded, bg = colors.bg }),
 		sym("TelescopePromptCounter")({ bg = colors.bg, fg = colors.gold }),
 		sym("TelescopeResultsBorder")({ fg = colors.blue, bg = colors.bg }),
-		sym("TelescopePromptPrefix")({ fg = colors.blue, bg = colors.bg }),
+		sym("TelescopeResultsTitle")({ fg = colors.blue, bg = colors.bg }),
+		sym("TelescopePromptBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
+		sym("TelescopePromptPrefix")({ fg = colors.dark_yellow, bg = colors.bg }),
+		sym("TelescopePromptTitle")({ fg = colors.dark_yellow, bg = colors.bg }),
 	}
 end)
