@@ -335,6 +335,9 @@ return lush(function(injected_functions)
 
     -- Lua
     sym("@lsp.type.function.lua")({ fg = colors.fg }),
+    sym("@lsp.type.method.lua")({ fg = colors.blue }),
+    sym("@number.lua")({ fg = colors.cyan }),
+    sym("@lsp.typemod.variable.global.lua")({ fg = colors.purple, gui='italic'}),
 
     -- Telescope
     sym("TelescopePromptNormal")({ fg = colors.fg, bg = colors.bg }),
