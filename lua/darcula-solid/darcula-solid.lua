@@ -260,16 +260,16 @@ return lush(function(injected_functions)
     sym("@namespace.rust")({ fg = colors.orange }),
     sym("@punctuation.delimiter.rust")({ fg = colors.fg }),
     sym("@constant.rust")({ fg = colors.magenta }),
-    sym("@function.call.rust")({ fg = colors.blue, gui='italic' }),
+    sym("@function.call.rust")({ fg = colors.blue, gui = "italic" }),
     sym("@number.rust")({ fg = colors.cyan }),
     sym("@lsp.type.namespace.rust")({ fg = colors.fg }),
-    sym("@lsp.type.enumMember.rust")({ fg = colors.magenta, gui='italic' }),
-    sym("@lsp.typemod.variable.constant.rust")({ fg = colors.magenta, gui='italic' }),
+    sym("@lsp.type.enumMember.rust")({ fg = colors.magenta, gui = "italic" }),
+    sym("@lsp.typemod.variable.constant.rust")({ fg = colors.magenta, gui = "italic" }),
     sym("@lsp.type.enum.rust")({ fg = colors.fg }),
     sym("@lsp.type.struct.rust")({ fg = colors.fg }),
     sym("@type.qualifier.rust")({ fg = colors.orange }),
-    sym("@lsp.typemod.constParameter.declaration.rust")({ fg = colors.magenta, gui='italic' }),
-    sym("@lsp.type.constParameter.rust")({ fg = colors.magenta, gui='italic' }),
+    sym("@lsp.typemod.constParameter.declaration.rust")({ fg = colors.magenta, gui = "italic" }),
+    sym("@lsp.type.constParameter.rust")({ fg = colors.magenta, gui = "italic" }),
     sym("@lsp.type.interface.rust")({ fg = colors.fg }),
     sym("@lsp.typemod.method.declaration.rust")({ fg = colors.blue_alt }),
     sym("@lsp.type.builtinType.rust")({ fg = colors.orange }),
@@ -278,29 +278,13 @@ return lush(function(injected_functions)
     sym("@lsp.type.property.rust")({ fg = colors.magenta }),
     sym("@lsp.type.operator.rust")({ fg = colors.orange }),
     sym("@lsp.type.selfTypeKeyword.rust")({ fg = colors.orange }),
-    sym("@lsp.typemod.method.static.rust")({ fg = colors.blue, gui='italic' }),
+    sym("@lsp.typemod.method.static.rust")({ fg = colors.blue, gui = "italic" }),
     sym("@lsp.type.macro.rust")({ fg = colors.white }),
     sym("@lsp.typemod.function.declaration.rust")({ fg = colors.blue }),
     sym("@lsp.typemod.function.unsafe.rust")({ bg = "#4D3E3E" }),
     sym("@lsp.typemod.comment.documentation.rust")({ fg = "#5F826B" }),
     sym("@lsp.typemod.generic.attribute.rust")({ fg = colors.yellow_alt2 }),
     sym("@lsp.type.lifetime.rust")({ fg = "#20999D" }),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     -- java
 
@@ -387,7 +371,7 @@ return lush(function(injected_functions)
     sym("@lsp.type.function.lua")({ fg = colors.fg }),
     sym("@lsp.type.method.lua")({ fg = colors.blue }),
     sym("@number.lua")({ fg = colors.cyan }),
-    sym("@lsp.typemod.variable.global.lua")({ fg = colors.purple, gui='italic'}),
+    sym("@lsp.typemod.variable.global.lua")({ fg = colors.purple, gui = "italic" }),
 
     -- Telescope
     sym("TelescopePromptNormal")({ fg = colors.fg, bg = colors.bg }),
