@@ -14,4 +14,3 @@ vim.g.terminal_color_12 = "#5aa0ff"
 vim.g.terminal_color_13 = "#e55ce5"
 vim.g.terminal_color_14 = "#33bfbf"
 vim.g.terminal_color_15 = "#ffffff"
-
