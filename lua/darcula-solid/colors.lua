@@ -13,6 +13,7 @@ return {
 
   -- Color palette
   red = "#F75464",
+  red_dark = "#2e2626",
   salmon = "#FA6675",
   orange = "#CF8E6D",
   dark_orange = "#CC7832",
@@ -22,11 +23,14 @@ return {
   yellow = "#AFBF7E",
   gold = "#B09D79",
   green = "#6AAB73",
+  green_dark = "#294436",
   teal = "#293C40",
   cyan = "#6FAFBD",
   teal_light = "#16BAAC",
   blue = "#56A8F5",
   blue_alt = "#57AAF7",
+  blue_dark = "#283541",
+  blue_mid = "#385570",
   purple = "#B189F5",
   magenta = "#C77DBB",
 

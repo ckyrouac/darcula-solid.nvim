@@ -70,13 +70,6 @@ return lush(function(injected_functions)
     sym("Directory")({ fg = colors.blue }), -- directory names (and other special names in listings)
     sym("Title")({ fg = colors.blue }), -- titles for output from ":set all" ":autocmd" etc.
 
-    sym("DiffAdd")({ fg = "#606b4f" }),
-    sym("DiffDelete")({ fg = colors.red }),
-    sym("DiffChange")({ fg = "#915a00" }),
-    sym("DiffText")({ sym("DiffChange"), gui = un }),
-    sym("DiffAdded")({ sym("DiffAdd") }),
-    sym("DiffRemoved")({ sym("DiffDelete") }),
-
     sym("SpellBad")({ fg = colors.red, gui = un }),
     sym("SpellCap")({ fg = colors.magenta, gui = un }),
     sym("SpellLocal")({ fg = colors.orange, gui = un }),
@@ -318,6 +311,16 @@ return lush(function(injected_functions)
     sym("GitSignsChange")({ fg = colors.blue }),
     sym("GitSignsDelete")({ fg = colors.red }),
     sym("GitSignsUntracked")({ fg = colors.yellow }),
+    sym("GitSignsAddPreview")({ fg = colors.green }),
+    sym("GitSignsDeletePreview")({ fg = colors.red }),
+
+    -- diffs
+    sym("DiffAdd")({ bg = colors.green_dark, fg=colors.fg }),
+    sym("DiffDelete")({ bg = colors.red_dark, fg=colors.fg }),
+    sym("DiffChange")({ bc = colors.blue_dark, fg=colors.fg }),
+    sym("DiffText")({ bg=colors.blue_mid, fg=colors.fg}),
+    sym("DiffAdded")({ sym("DiffAdd") }),
+    sym("DiffRemoved")({ sym("DiffDelete") }),
 
     -- bufferline
     -- for some reason the background needs to be set in the bufferline config
