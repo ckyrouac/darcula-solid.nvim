@@ -315,48 +315,23 @@ return lush(function(injected_functions)
     sym("GitSignsDeletePreview")({ fg = colors.red }),
 
     -- diffs
-    sym("DiffAdd")({ bg = colors.green_dark, fg=colors.fg }),
-    sym("DiffDelete")({ bg = colors.red_dark, fg=colors.fg }),
-    sym("DiffChange")({ bc = colors.blue_dark, fg=colors.fg }),
-    sym("DiffText")({ bg=colors.blue_mid, fg=colors.fg}),
+    sym("DiffAdd")({ bg = colors.green_dark, fg = colors.fg }),
+    sym("DiffDelete")({ bg = colors.red_dark, fg = colors.fg }),
+    sym("DiffChange")({ bc = colors.blue_dark, fg = colors.fg }),
+    sym("DiffText")({ bg = colors.blue_mid, fg = colors.fg }),
     sym("DiffAdded")({ sym("DiffAdd") }),
     sym("DiffRemoved")({ sym("DiffDelete") }),
 
     -- bufferline
-    -- for some reason the background needs to be set in the bufferline config
-    -- sym "BufferLineBackground" { bg=colors.bg };sym "BufferLineTab" { bg=colors.bg };
+    sym("BufferLineBackground")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineNumbersSelected")({ bg = colors.bg, fg = colors.fg }),
+    sym("BufferLineBufferSelected")({ bg = colors.bg, fg = colors.fg, gui = "bold" }),
     sym("BufferLineFill")({ bg = colors.bg }),
     sym("BufferLineCloseButtonVisible")({ bg = colors.bg }),
-    sym("BufferLineBufferVisible")({ bg = colors.bg }),
-    sym("BufferLineBuffer")({ bg = colors.bg }),
-    sym("BufferLineNumbersVisible")({ bg = colors.bg }),
-    sym("BufferLineNumbers")({ bg = colors.bg }),
-
-    -- bufferline diagnostics
-    sym("BufferLineHintSelected")({ fg = colors.fg }),
-    sym("BufferLineHintDiagnosticVisible")(sym("LspDiagnosticsDefaultHint")),
-    sym("BufferLineHintDiagnostic")(sym("LspDiagnosticsDefaultHint")),
-    sym("BufferLineHintVisible")({ bg = colors.bg }),
-    sym("BufferLineHint")({ bg = colors.bg }),
-
-    sym("BufferLineInfoSelected")({ fg = colors.fg }),
-    sym("BufferLineInfoDiagnosticVisible")(sym("LspDiagnosticsDefaultInfo")),
-    sym("BufferLineInfoDiagnostic")(sym("LspDiagnosticsDefaultInfo")),
-    sym("BufferLineInfoVisible")({ bg = colors.bg }),
-    sym("BufferLineInfo")({ bg = colors.bg }),
-
-    sym("BufferLineWarningSelected")({ fg = colors.fg }),
-    sym("BufferLineWarningDiagnosticVisible")(sym("LspDiagnosticsDefaultWarning")),
-    sym("BufferLineWarningDiagnostic")(sym("LspDiagnosticsDefaultWarning")),
-    sym("BufferLineWarning")({ bg = colors.bg }),
-    sym("BufferLineWarningVisible")({ bg = colors.bg }),
-
-    sym("BufferLineErrorSelected")({ fg = colors.fg }),
-    sym("BufferLineErrorDiagnosticVisible")(sym("LspDiagnosticsDefaultError")),
-    sym("BufferLineErrorDiagnostic")(sym("LspDiagnosticsDefaultError")),
-    sym("BufferLineError")({ bg = colors.bg }),
-    sym("BufferLineErrorVisible")({ bg = colors.bg }),
-
+    sym("BufferLineBufferVisible")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineBuffer")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineNumbersVisible")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineNumbers")({ bg = colors.bg, fg = colors.comment }),
     sym("BufferLineModifiedVisible")({ bg = colors.bg }),
     sym("BufferLineDuplicate")({ bg = colors.bg, fg = colors.comment }),
     sym("BufferLineDuplicateVisible")({ bg = colors.bg, fg = colors.comment }),
@@ -377,6 +352,33 @@ return lush(function(injected_functions)
     sym("BufferLineDevIconDefaultSelected")({ bg = colors.bg }),
     sym("BufferLineDevIconDefaultInactive")({ bg = colors.bg }),
     sym("BufferLineLineGroupSeparator")({ bg = colors.bg }),
+
+    -- bufferline diagnostics
+    sym("BufferLineDiagnosticSelected")({ bg = colors.bg, fg = colors.fg }),
+
+    sym("BufferLineHintSelected")({ fg = colors.fg, gui = "bold" }),
+    sym("BufferLineHintDiagnosticVisible")(sym("LspDiagnosticsDefaultHint")),
+    sym("BufferLineHintDiagnostic")(sym("LspDiagnosticsDefaultHint")),
+    sym("BufferLineHintVisible")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineHint")({ bg = colors.bg, fg = colors.comment }),
+
+    sym("BufferLineInfoSelected")({ fg = colors.fg, gui = "bold" }),
+    sym("BufferLineInfoDiagnosticVisible")(sym("LspDiagnosticsDefaultInfo")),
+    sym("BufferLineInfoDiagnostic")(sym("LspDiagnosticsDefaultInfo")),
+    sym("BufferLineInfo")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineInfoVisible")({ bg = colors.bg, fg = colors.comment }),
+
+    sym("BufferLineWarningSelected")({ fg = colors.fg, gui = "bold" }),
+    sym("BufferLineWarningDiagnosticVisible")(sym("LspDiagnosticsDefaultWarning")),
+    sym("BufferLineWarningDiagnostic")(sym("LspDiagnosticsDefaultWarning")),
+    sym("BufferLineWarning")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineWarningVisible")({ bg = colors.bg, fg = colors.comment }),
+
+    sym("BufferLineErrorSelected")({ fg = colors.fg, gui = "bold" }),
+    sym("BufferLineErrorDiagnosticVisible")(sym("LspDiagnosticsDefaultError")),
+    sym("BufferLineErrorDiagnostic")(sym("LspDiagnosticsDefaultError")),
+    sym("BufferLineError")({ bg = colors.bg, fg = colors.comment }),
+    sym("BufferLineErrorVisible")({ bg = colors.bg, fg = colors.comment }),
 
     -- Lua
     sym("@lsp.type.function.lua")({ fg = colors.fg }),
