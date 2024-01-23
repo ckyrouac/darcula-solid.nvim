@@ -37,4 +37,17 @@ return {
   -- extra colors
   dark_magenta = "#402f33",
   gray2 = "#373b39",
+
+  -- true colors
+  true_color = {
+    red = "#ff0000",
+    green = "#00ff00",
+    blue = "#0000ff",
+    black = "#000000",
+    white = "#ffffff",
+    yellow = "#ffff00",
+    purple = "#ff00ff",
+    cyan = "#00ffff",
+    orange = "#ff8000",
+  }
 }

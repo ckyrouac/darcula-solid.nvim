@@ -82,10 +82,10 @@ return lush(function(injected_functions)
     sym("LspReferenceWrite")({ bg = colors.mid }), -- highlighting "write" references
 
     -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
-    sym("LspDiagnosticsDefaultError")({ fg = colors.red }),
-    sym("LspDiagnosticsDefaultWarning")({ fg = colors.yellow }),
-    sym("LspDiagnosticsDefaultInformation")({ fg = colors.fg }),
-    sym("LspDiagnosticsDefaultHint")({ fg = colors.teal }),
+    sym("LspDiagnosticsDefaultError")({ fg = colors.true_color.red }),
+    sym("LspDiagnosticsDefaultWarning")({ fg = colors.true_color.orange }),
+    sym("LspDiagnosticsDefaultInformation")({ fg = colors.true_color.yellow }),
+    sym("LspDiagnosticsDefaultHint")({ fg = colors.true_color.white }),
 
     --LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
     --LspDiagnosticsVirtualTextWarning     { };    -- "Warning" diagnostic virtual text
@@ -331,22 +331,24 @@ return lush(function(injected_functions)
     sym("BufferLineBuffer")({ bg = colors.bg }),
     sym("BufferLineNumbersVisible")({ bg = colors.bg }),
     sym("BufferLineNumbers")({ bg = colors.bg }),
-    sym("BufferLineDiagnostic")({ bg = colors.bg }),
-    sym("BufferLineDiagnosticVisible")({ bg = colors.bg }),
-    sym("BufferLineHintDiagnosticVisible")({ bg = colors.bg }),
-    sym("BufferLineHintDiagnostic")({ bg = colors.bg }),
+
+    sym("BufferLineDiagnostic")({ fg = colors.comment, bg = colors.bg }),
+    sym("BufferLineDiagnosticVisible")({ fg = colors.comment, bg = colors.bg }),
+    sym("BufferLineHintDiagnosticVisible")(sym("LspDiagnosticsDefaultHint")),
+    sym("BufferLineHintDiagnostic")(sym("LspDiagnosticsDefaultHint")),
+    sym("BufferLineInfoDiagnosticVisible")(sym("LspDiagnosticsDefaultInfo")),
+    sym("BufferLineInfoDiagnostic")(sym("LspDiagnosticsDefaultInfo")),
+    sym("BufferLineWarningDiagnosticVisible")(sym("LspDiagnosticsDefaultWarning")),
+    sym("BufferLineWarningDiagnostic")(sym("LspDiagnosticsDefaultWarning")),
+    sym("BufferLineErrorDiagnosticVisible")(sym("LspDiagnosticsDefaultError")),
+    sym("BufferLineErrorDiagnostic")(sym("LspDiagnosticsDefaultError")),
+
     sym("BufferLineHintVisible")({ bg = colors.bg }),
     sym("BufferLineHint")({ bg = colors.bg }),
     sym("BufferLineInfoVisible")({ bg = colors.bg }),
     sym("BufferLineInfo")({ bg = colors.bg }),
-    sym("BufferLineInfoDiagnosticVisible")({ bg = colors.bg }),
-    sym("BufferLineInfoDiagnostic")({ bg = colors.bg }),
-    sym("BufferLineWarningDiagnosticVisible")({ bg = colors.bg }),
-    sym("BufferLineWarningDiagnostic")({ bg = colors.bg }),
     sym("BufferLineWarning")({ bg = colors.bg }),
     sym("BufferLineWarningVisible")({ bg = colors.bg }),
-    sym("BufferLineErrorDiagnosticVisible")({ bg = colors.bg }),
-    sym("BufferLineErrorDiagnostic")({ bg = colors.bg }),
     sym("BufferLineError")({ bg = colors.bg }),
     sym("BufferLineErrorVisible")({ bg = colors.bg }),
     sym("BufferLineModifiedVisible")({ bg = colors.bg }),
