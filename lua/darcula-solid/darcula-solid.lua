@@ -332,25 +332,31 @@ return lush(function(injected_functions)
     sym("BufferLineNumbersVisible")({ bg = colors.bg }),
     sym("BufferLineNumbers")({ bg = colors.bg }),
 
-    sym("BufferLineDiagnostic")({ fg = colors.comment, bg = colors.bg }),
-    sym("BufferLineDiagnosticVisible")({ fg = colors.comment, bg = colors.bg }),
+    -- bufferline diagnostics
+    sym("BufferLineHintSelected")({ fg = colors.fg }),
     sym("BufferLineHintDiagnosticVisible")(sym("LspDiagnosticsDefaultHint")),
     sym("BufferLineHintDiagnostic")(sym("LspDiagnosticsDefaultHint")),
-    sym("BufferLineInfoDiagnosticVisible")(sym("LspDiagnosticsDefaultInfo")),
-    sym("BufferLineInfoDiagnostic")(sym("LspDiagnosticsDefaultInfo")),
-    sym("BufferLineWarningDiagnosticVisible")(sym("LspDiagnosticsDefaultWarning")),
-    sym("BufferLineWarningDiagnostic")(sym("LspDiagnosticsDefaultWarning")),
-    sym("BufferLineErrorDiagnosticVisible")(sym("LspDiagnosticsDefaultError")),
-    sym("BufferLineErrorDiagnostic")(sym("LspDiagnosticsDefaultError")),
-
     sym("BufferLineHintVisible")({ bg = colors.bg }),
     sym("BufferLineHint")({ bg = colors.bg }),
+
+    sym("BufferLineInfoSelected")({ fg = colors.fg }),
+    sym("BufferLineInfoDiagnosticVisible")(sym("LspDiagnosticsDefaultInfo")),
+    sym("BufferLineInfoDiagnostic")(sym("LspDiagnosticsDefaultInfo")),
     sym("BufferLineInfoVisible")({ bg = colors.bg }),
     sym("BufferLineInfo")({ bg = colors.bg }),
+
+    sym("BufferLineWarningSelected")({ fg = colors.fg }),
+    sym("BufferLineWarningDiagnosticVisible")(sym("LspDiagnosticsDefaultWarning")),
+    sym("BufferLineWarningDiagnostic")(sym("LspDiagnosticsDefaultWarning")),
     sym("BufferLineWarning")({ bg = colors.bg }),
     sym("BufferLineWarningVisible")({ bg = colors.bg }),
+
+    sym("BufferLineErrorSelected")({ fg = colors.fg }),
+    sym("BufferLineErrorDiagnosticVisible")(sym("LspDiagnosticsDefaultError")),
+    sym("BufferLineErrorDiagnostic")(sym("LspDiagnosticsDefaultError")),
     sym("BufferLineError")({ bg = colors.bg }),
     sym("BufferLineErrorVisible")({ bg = colors.bg }),
+
     sym("BufferLineModifiedVisible")({ bg = colors.bg }),
     sym("BufferLineDuplicate")({ bg = colors.bg, fg = colors.comment }),
     sym("BufferLineDuplicateVisible")({ bg = colors.bg, fg = colors.comment }),
