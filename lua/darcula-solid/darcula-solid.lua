@@ -340,9 +340,10 @@ return lush(function(injected_functions)
     sym("BufferLineSeparatorVisible")({ bg = colors.bg }),
     sym("BufferLineIndicatorVisible")({ bg = colors.bg, fg = colors.bg }),
     sym("BufferLineIndicatorSelected")({ bg = colors.bg, fg = colors.bg }),
+
     sym("BufferLinePick")({ bg = colors.bg }),
     sym("BufferLinePickVisible")({ bg = colors.bg }),
-    sym("BufferLineOffsetSeparator")({ bg = colors.bg }),
+    sym("BufferLineOffsetSeparator")({ bg = colors.bg, fg = colors.bg_alt }),
     sym("BufferLineTruncMarker")({ bg = colors.bg }),
     sym("BufferLineTabSeparator")({ bg = colors.bg }),
     sym("BufferLineTabClose")({ bg = colors.bg }),
