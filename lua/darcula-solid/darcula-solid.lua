@@ -388,5 +388,7 @@ return lush(function(injected_functions)
     sym("TelescopePromptBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
     sym("TelescopePromptPrefix")({ fg = colors.dark_yellow, bg = colors.bg }),
     sym("TelescopePromptTitle")({ fg = colors.dark_yellow, bg = colors.bg }),
+
+    sym("FloatBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
   }
 end)
