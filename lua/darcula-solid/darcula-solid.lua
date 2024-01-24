@@ -16,6 +16,8 @@ return lush(function(injected_functions)
     sym("NormalFloat")({ fg = colors.fg, bg = colors.bg }),
     sym("NormalNC")({ fg = colors.fg, bg = colors.bg }), -- normal text in non-current windows
 
+    sym("FloatBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
+
     sym("Comment")({ fg = colors.comment, gui = it }),
     sym("Whitespace")({ fg = colors.mid }), -- 'listchars'
     sym("Conceal")({ fg = "#404040" }),
@@ -403,6 +405,21 @@ return lush(function(injected_functions)
     sym("WhichKeyFloat")({ fg = colors.fg, bg = colors.bg_alt2 }),
     sym("WhichKeyBorder")({ fg = colors.red, bg = colors.bg_alt2 }),
 
-    sym("FloatBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
+    -- notify
+    sym("NotifyERRORBorder")(sym("LspDiagnosticsDefaultError")),
+    sym("NotifyWARNBorder")(sym("LspDiagnosticsDefaultWarning")),
+    sym("NotifyINFOBorder")(sym("LspDiagnosticsDefaultInfo")),
+    sym("NotifyDEBUGBorder")(sym("LspDiagnosticsDefaultHint")),
+    sym("NotifyTRACEBorder")(sym("LspDiagnosticsDefaultHint")),
+    sym("NotifyERRORIcon")(sym("LspDiagnosticsDefaultError")),
+    sym("NotifyWARNIcon")(sym("LspDiagnosticsDefaultWarn")),
+    sym("NotifyINFOIcon")(sym("LspDiagnosticsDefaultInfo")),
+    sym("NotifyDEBUGIcon")(sym("LspDiagnosticsDefaultHint")),
+    sym("NotifyTRACEIcon")(sym("LspDiagnosticsDefaultHint")),
+    sym("NotifyERRORTitle")(sym("LspDiagnosticsDefaultError")),
+    sym("NotifyWARNTitle")(sym("LspDiagnosticsDefaultWarn")),
+    sym("NotifyINFOTitle")(sym("LspDiagnosticsDefaultInfo")),
+    sym("NotifyDEBUGTitle")(sym("LspDiagnosticsDefaultHint")),
+    sym("NotifyTRACETitle")(sym("LspDiagnosticsDefaultHint")),
   }
 end)
