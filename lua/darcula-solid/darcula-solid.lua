@@ -398,6 +398,11 @@ return lush(function(injected_functions)
     sym("TelescopePromptPrefix")({ fg = colors.dark_yellow, bg = colors.bg }),
     sym("TelescopePromptTitle")({ fg = colors.dark_yellow, bg = colors.bg }),
 
+    -- Which key
+    sym("WhichKey")({ fg = colors.blue, bg = colors.bg_alt2 }),
+    sym("WhichKeyFloat")({ fg = colors.fg, bg = colors.bg_alt2 }),
+    sym("WhichKeyBorder")({ fg = colors.red, bg = colors.bg_alt2 }),
+
     sym("FloatBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
   }
 end)

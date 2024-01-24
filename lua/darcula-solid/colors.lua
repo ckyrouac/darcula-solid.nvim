@@ -2,6 +2,7 @@ return {
   -- Base colors
   bg = "#1e1f22",
   bg_alt = "#2b2d30",
+  bg_alt2 = "#2f3032",
   overbg = "#282829",
   subtle = "#2a2a2b",
   fg = "#c3cad1",
