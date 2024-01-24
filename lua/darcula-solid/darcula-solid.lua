@@ -43,8 +43,8 @@ return lush(function(injected_functions)
     sym("WildMenu")({ sym("Pmenu") }), -- current match in 'wildmenu' completion
     sym("QuickFixLine")({ fg = colors.pop }), -- Current |quickfix| item in the quickfix window
 
-    sym("StatusLine")({ bg = colors.bg, fg = colors.bg }),
-    sym("StatusLineNC")({ fg = colors.faded, bg = colors.bg }),
+    sym("StatusLine")({ bg = colors.bg_alt, fg = colors.fg }),
+    sym("StatusLineNC")({ bg = colors.bg_alt, fg = colors.faded }),
 
     sym("TabLine")({ bg = colors.mid }), -- not active tab page label
     sym("TabLineFill")({ bg = colors.overbg }), -- where there are no labels

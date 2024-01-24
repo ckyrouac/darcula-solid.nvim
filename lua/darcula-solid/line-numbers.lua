@@ -1,5 +1,17 @@
 local List = require("plenary.collections.py_list")
-local DisableLineNumberWindowList = List({ "NvimTree", "SidebarNvim", "GitSigns*", "HoverHint" })
+local DisableLineNumberWindowList = List({
+  "NvimTree",
+  "SidebarNvim",
+  "GitSigns*",
+  "HoverHint",
+  "dapui_watches",
+  "dapui_stacks",
+  "dapui_breakpoints",
+  "dapui_scopes",
+  "dapui_console",
+  "dapui_console",
+  "dap-repl",
+})
 
 vim.o.signcolumn = "no"
 vim.o.foldcolumn = "0"
