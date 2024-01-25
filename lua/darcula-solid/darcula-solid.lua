@@ -47,6 +47,8 @@ return lush(function(injected_functions)
 
     sym("StatusLine")({ bg = colors.bg_alt, fg = colors.fg }),
     sym("StatusLineNC")({ bg = colors.bg_alt, fg = colors.faded }),
+    sym("WinBar")({ bg = colors.bg_alt, fg = colors.fg }),
+    sym("WinBarNC")({ bg = colors.bg_alt, fg = colors.faded }),
 
     sym("TabLine")({ bg = colors.mid }), -- not active tab page label
     sym("TabLineFill")({ bg = colors.overbg }), -- where there are no labels
@@ -406,20 +408,20 @@ return lush(function(injected_functions)
     sym("WhichKeyBorder")({ fg = colors.red, bg = colors.bg_alt2 }),
 
     -- notify
-    sym("NotifyERRORBorder")({fg = colors.red, bg= colors.bg }),
-    sym("NotifyWARNBorder")({fg = colors.orange, bg= colors.bg }),
-    sym("NotifyINFOBorder")({fg = colors.comment, bg= colors.bg }),
-    sym("NotifyDEBUGBorder")({fg = colors.blue, bg= colors.bg }),
-    sym("NotifyTRACEBorder")({fg = colors.blue, bg= colors.bg }),
-    sym("NotifyERRORIcon")({fg = colors.red, bg= colors.bg }),
-    sym("NotifyWARNIcon")({fg = colors.orange, bg= colors.bg }),
-    sym("NotifyINFOIcon")({fg = colors.comment, bg= colors.bg }),
-    sym("NotifyDEBUGIcon")({fg = colors.blue, bg= colors.bg }),
-    sym("NotifyTRACEIcon")({fg = colors.blue, bg= colors.bg }),
-    sym("NotifyERRORTitle")({fg = colors.red, bg= colors.bg }),
-    sym("NotifyWARNTitle")({fg = colors.orange, bg= colors.bg }),
-    sym("NotifyINFOTitle")({fg = colors.comment, bg= colors.bg }),
-    sym("NotifyDEBUGTitle")({fg = colors.blue, bg= colors.bg }),
-    sym("NotifyTRACETitle")({fg = colors.blue, bg= colors.bg }),
+    sym("NotifyERRORBorder")({ fg = colors.red, bg = colors.bg }),
+    sym("NotifyWARNBorder")({ fg = colors.orange, bg = colors.bg }),
+    sym("NotifyINFOBorder")({ fg = colors.comment, bg = colors.bg }),
+    sym("NotifyDEBUGBorder")({ fg = colors.blue, bg = colors.bg }),
+    sym("NotifyTRACEBorder")({ fg = colors.blue, bg = colors.bg }),
+    sym("NotifyERRORIcon")({ fg = colors.red, bg = colors.bg }),
+    sym("NotifyWARNIcon")({ fg = colors.orange, bg = colors.bg }),
+    sym("NotifyINFOIcon")({ fg = colors.comment, bg = colors.bg }),
+    sym("NotifyDEBUGIcon")({ fg = colors.blue, bg = colors.bg }),
+    sym("NotifyTRACEIcon")({ fg = colors.blue, bg = colors.bg }),
+    sym("NotifyERRORTitle")({ fg = colors.red, bg = colors.bg }),
+    sym("NotifyWARNTitle")({ fg = colors.orange, bg = colors.bg }),
+    sym("NotifyINFOTitle")({ fg = colors.comment, bg = colors.bg }),
+    sym("NotifyDEBUGTitle")({ fg = colors.blue, bg = colors.bg }),
+    sym("NotifyTRACETitle")({ fg = colors.blue, bg = colors.bg }),
   }
 end)
