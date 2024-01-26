@@ -47,8 +47,8 @@ return lush(function(injected_functions)
 
     sym("StatusLine")({ bg = colors.bg_alt, fg = colors.fg }),
     sym("StatusLineNC")({ bg = colors.bg_alt, fg = colors.faded }),
-    sym("WinBar")({ bg = colors.bg_alt, fg = colors.fg }),
-    sym("WinBarNC")({ bg = colors.bg_alt, fg = colors.faded }),
+    sym("WinBar")({ bg = colors.bg, fg = colors.fg, gui = "bold,underline" }),
+    sym("WinBarNC")({ bg = colors.bg, fg = colors.faded, gui = "underline" }),
 
     sym("TabLine")({ bg = colors.mid }), -- not active tab page label
     sym("TabLineFill")({ bg = colors.overbg }), -- where there are no labels
