@@ -11,6 +11,7 @@ local DisableLineNumberWindowList = List({
   "dapui_console",
   "dapui_console",
   "dap-repl",
+  "noice",
 })
 
 vim.o.signcolumn = "no"
@@ -19,7 +20,7 @@ vim.o.foldcolumn = "0"
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
   pattern = { "*" },
   callback = function()
-    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+    if DisableLineNumberWindowList:contains(vim.bo.filetype) or vim.bo.filetype == "" then
       vim.o.rnu = false
       vim.o.number = false
       vim.o.signcolumn = "no"
@@ -37,7 +38,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "WinLeave" }, {
   pattern = { "*" },
   callback = function()
-    if DisableLineNumberWindowList:contains(vim.bo.filetype) then
+    if DisableLineNumberWindowList:contains(vim.bo.filetype) or vim.bo.filetype == "" then
       vim.o.rnu = false
       vim.o.number = false
       vim.o.signcolumn = "no"
