@@ -423,5 +423,28 @@ return lush(function(injected_functions)
     sym("NotifyINFOTitle")({ fg = colors.comment, bg = colors.bg }),
     sym("NotifyDEBUGTitle")({ fg = colors.blue, bg = colors.bg }),
     sym("NotifyTRACETitle")({ fg = colors.blue, bg = colors.bg }),
+
+    -- scrollbar
+    sym("ScrollbarHandle")({ fg = colors.white, bg = colors.bg_alt }),
+    sym("ScrollbarCursorHandle")({ fg = colors.bg_alt, bg = colors.bg_alt }),
+    sym("ScrollbarCursor")({  fg = colors.bg, bg = colors.bg }),
+    -- sym("ScrollbarSearchHandle")({ fg = colors.red, bg = colors.blue }),
+    -- sym("ScrollbarSearch")({ fg = colors.red, bg = colors.blue }),
+    -- sym("ScrollbarErrorHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarError")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarWarnHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarWarn")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarInfoHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarInfo")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarHintHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarHint")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarMiscHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarMisc")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitAdd")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitAddHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitChange")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitChangeHandle")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitDelete")({ fg = colors.fg, bg = colors.bg }),
+    -- sym("ScrollbarGitDeleteHandle")({ fg = colors.fg, bg = colors.bg }),
   }
 end)
