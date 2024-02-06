@@ -16,7 +16,7 @@ return lush(function(injected_functions)
     sym("NormalFloat")({ fg = colors.fg, bg = colors.bg }),
     sym("NormalNC")({ fg = colors.fg, bg = colors.bg }), -- normal text in non-current windows
 
-    sym("FloatBorder")({ fg = colors.dark_yellow, bg = colors.bg }),
+    sym("FloatBorder")({ fg = colors.blue_mid, bg = colors.bg }),
 
     sym("Comment")({ fg = colors.comment, gui = it }),
     sym("Whitespace")({ fg = colors.mid }), -- 'listchars'
