@@ -31,6 +31,7 @@ return {
   blue = "#56A8F5",
   blue_alt = "#57AAF7",
   blue_dark = "#283541",
+  blue_mid2 = "#263a4d",
   blue_mid = "#385570",
   purple = "#B189F5",
   magenta = "#C77DBB",

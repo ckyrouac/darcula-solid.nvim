@@ -81,9 +81,9 @@ return lush(function(injected_functions)
 
     ---- Language Server Protocol highlight groups ---------------------------------
 
-    sym("LspReferenceText")({ bg = colors.mid }), -- highlighting "text" references
-    sym("LspReferenceRead")({ bg = colors.mid }), -- highlighting "read" references
-    sym("LspReferenceWrite")({ bg = colors.mid }), -- highlighting "write" references
+    sym("LspReferenceText")({ bg = colors.blue_mid2 }), -- highlighting "text" references
+    sym("LspReferenceRead")({ bg = colors.blue_mid2 }), -- highlighting "read" references
+    sym("LspReferenceWrite")({ bg = colors.blue_mid2 }), -- highlighting "write" references
 
     -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
     sym("LspDiagnosticsDefaultError")({ fg = colors.true_color.red }),
