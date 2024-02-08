@@ -446,5 +446,8 @@ return lush(function(injected_functions)
     -- sym("ScrollbarGitChangeHandle")({ fg = colors.fg, bg = colors.bg }),
     -- sym("ScrollbarGitDelete")({ fg = colors.fg, bg = colors.bg }),
     -- sym("ScrollbarGitDeleteHandle")({ fg = colors.fg, bg = colors.bg }),
+
+    -- cmp
+    sym("CmpItemMenu")({ fg = colors.comment, bg = colors.bg }),
   }
 end)
