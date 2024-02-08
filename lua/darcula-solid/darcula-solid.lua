@@ -449,5 +449,21 @@ return lush(function(injected_functions)
 
     -- cmp
     sym("CmpItemMenu")({ fg = colors.comment }),
+
+    sym("CmpItemAbbrDeprecated")({ bg = "NONE", strikethrough = true, fg = colors.dark_magenta }),
+    sym("CmpItemKindText")({ bg = "NONE", fg = colors.fg }),
+
+    sym("CmpItemAbbrMatch")({ bg = "NONE", fg = colors.blue }),
+    sym("CmpItemAbbrMatchFuzzy")({ link = "CmpIntemAbbrMatch" }),
+
+    sym("CmpItemKindVariable")({ bg = "NONE", fg = colors.purple }),
+    sym("CmpItemKindInterface")({ link = "CmpItemKindVariable" }),
+
+    sym("CmpItemKindFunction")({ bg = "NONE", fg = colors.orange }),
+    sym("CmpItemKindMethod")({ link = "CmpItemKindFunction" }),
+
+    sym("CmpItemKindKeyword")({ bg = "NONE", fg = colors.cyan }),
+    sym("CmpItemKindProperty")({ link = "CmpItemKindKeyword" }),
+    sym("CmpItemKindUnit")({ link = "CmpItemKindKeyword" }),
   }
 end)
