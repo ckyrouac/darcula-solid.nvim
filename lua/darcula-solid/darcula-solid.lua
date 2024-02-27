@@ -250,6 +250,8 @@ return lush(function(injected_functions)
 
     -- python
 
+    -- java
+
     -- rust
     sym("@function.macro.rust")({ fg = colors.yellow_alt2 }),
     sym("@lsp.typemod.attributeBracket.attribute.rust")({ fg = colors.yellow_alt2 }),
@@ -283,7 +285,29 @@ return lush(function(injected_functions)
     sym("@lsp.typemod.generic.attribute.rust")({ fg = colors.yellow_alt2 }),
     sym("@lsp.type.lifetime.rust")({ fg = "#20999D" }),
 
-    -- java
+    -- markdown
+    sym("@markup.heading.1.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.2.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.3.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.4.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.5.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.6.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.1.marker.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.2.marker.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.3.marker.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.4.marker.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.5.marker.markdown")({ fg = colors.magenta }),
+    sym("@markup.heading.6.marker.markdown")({ fg = colors.magenta }),
+    sym("@conceal.markdown_inline")({ fg = colors.orange }),
+    sym("@markup.strikethrough.markdown_inline")({ fg = colors.fg, gui = "strikethrough" }),
+    sym("@markup.link.url.markdown_inline")({ fg = colors.blue, gui = "underline" }),
+    sym("@markup.link.markdown_inline")({ fg = colors.blue }),
+    sym("@markup.link.label.markdown_inline")({ fg = colors.blue }),
+    sym("@markup.link.label.markdown")({ fg = colors.orange }),
+    sym("@markup.link.url.markdown")({ fg = colors.blue, gui = "italic" }),
+    sym("@markup.raw.block.markdown")({ fg = colors.green, gui = "italic" }),
+    sym("@markup.raw.markdown_inline")({ fg = colors.green, gui = "italic" }),
+    sym("@markup.quote.markdown")({ fg = colors.green, gui = "italic" }),
 
     -- NvimTree
     sym("NvimTreeNormal")({ bg = colors.bg, fg = colors.fg }),
