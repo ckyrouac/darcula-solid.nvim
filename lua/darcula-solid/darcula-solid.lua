@@ -309,6 +309,30 @@ return lush(function(injected_functions)
     sym("@markup.raw.markdown_inline")({ fg = colors.green, gui = "italic" }),
     sym("@markup.quote.markdown")({ fg = colors.green, gui = "italic" }),
 
+    -- c
+    sym("@keyword.import.c")({ fg = colors.yellow_alt }),
+    sym("@string.c")({ fg = colors.green }),
+    sym("@type.c")({ fg = colors.orange }),
+    sym("@lsp.typemod.variable.declaration.c")({ fg = colors.fg }),
+    sym("@type.qualifier.c")({ fg = colors.orange }),
+    sym("@type.builtin.c")({ fg = colors.orange }),
+    sym("@keyword.c")({ fg = colors.orange }),
+    sym("@property.c")({ fg = colors.purple_dark }),
+    sym("@contant.c")({ fg = colors.magenta }),
+    sym("@number.c")({ fg = colors.teal_alt }),
+    sym("@variable.c")({ fg = colors.orange }),
+    sym("@function.call.c")({ fg = colors.blue }),
+    sym("@keyword.directive.define.c")({ fg = colors.yellow_alt }),
+    sym("@keyword.directive.c")({ fg = colors.yellow_alt }),
+    sym("@lsp.typemod.macro.declaration.c")({ fg = colors.yellow_alt3 }),
+    sym("@lsp.typemod.variable.fileScope.c")({ fg = colors.fg }),
+    sym("@lsp.typemod.function.definition.c")({ fg = colors.blue }),
+    sym("@lsp.typemod.property.defaultLibrary.c")({ fg = colors.magenta }),
+    sym("@lsp.typemod.macro.globalScope.c")({ fg = colors.purple_dark }),
+    sym("@lsp.typemod.macro.declaration.cpp")({ fg = colors.purple_dark }),
+
+    -- java
+
     -- NvimTree
     sym("NvimTreeNormal")({ bg = colors.bg, fg = colors.fg }),
     sym("NvimTreeIndentMarker")({ fg = "#4f5152" }),
