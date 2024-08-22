@@ -3,7 +3,7 @@ local lush = require("lush")
 require("darcula-solid/cursor")
 require("darcula-solid/diagnostics")
 require("darcula-solid/line-numbers")
-require("darcula-solid/options")
+-- require("darcula-solid/options")
 require("darcula-solid/terminal")
 
 -- GUI options
