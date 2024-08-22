@@ -452,6 +452,7 @@ return lush(function(injected_functions)
 
     -- Which key
     sym("WhichKey")({ fg = colors.blue, bg = colors.bg_alt2 }),
+    sym("WhichKeyNormal")({ fg = colors.blue, bg = colors.bg_alt2 }),
     sym("WhichKeyFloat")({ fg = colors.fg, bg = colors.bg_alt2 }),
     sym("WhichKeyBorder")({ fg = colors.red, bg = colors.bg_alt2 }),
 
