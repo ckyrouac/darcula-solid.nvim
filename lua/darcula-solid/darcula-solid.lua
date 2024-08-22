@@ -35,8 +35,8 @@ return lush(function(injected_functions)
     sym("CursorLineNr")({ fg = colors.fg }),
     sym("SignColumn")({ sym("LineNr") }),
     sym("VertSplit")({ fg = colors.bg_alt, bg = colors.bg }), -- column separating vertically split windows
-    sym("Folded")({ fg = colors.comment, bg = colors.overbg }),
-    sym("FoldColumn")({ sym("LineNr") }),
+    sym("Folded")({ fg = colors.comment, bg = colors.blue_dark }),
+    sym("FoldColumn")({ fg = colors.gray2, bg = colors.bg }),
 
     sym("Pmenu")({ bg = colors.overbg }), -- Popup menu normal item
     sym("PmenuSel")({ bg = colors.mid }), -- selected item

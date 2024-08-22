@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
       vim.o.rnu = true
 
       vim.o.signcolumn = "yes"
-      vim.o.foldcolumn = "0"
+      vim.o.foldcolumn = "1"
     end
   end,
 })
@@ -44,11 +44,11 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "WinLeave" }, {
       vim.o.signcolumn = "no"
       vim.o.foldcolumn = "0"
     else
-      vim.o.number = false
+      vim.o.number = true
       vim.o.rnu = false
 
-      vim.o.signcolumn = "no"
-      vim.o.foldcolumn = "6"
+      vim.o.signcolumn = "yes"
+      vim.o.foldcolumn = "1"
     end
   end,
 })
