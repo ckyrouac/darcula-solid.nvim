@@ -86,10 +86,20 @@ return lush(function(injected_functions)
     sym("LspReferenceWrite")({ bg = colors.blue_mid2 }), -- highlighting "write" references
 
     -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
-    sym("LspDiagnosticsDefaultError")({ fg = colors.true_color.red }),
-    sym("LspDiagnosticsDefaultWarning")({ fg = colors.true_color.orange }),
-    sym("LspDiagnosticsDefaultInformation")({ fg = colors.true_color.yellow }),
-    sym("LspDiagnosticsDefaultHint")({ fg = colors.true_color.white }),
+    sym("DiagnosticError")({ fg = colors.red }),
+    sym("DiagnosticWarn")({ fg = colors.orange }),
+    sym("DiagnosticInfo")({ fg = colors.yellow }),
+    sym("DiagnosticHint")({ fg = colors.cyan }),
+
+    sym("LspDiagnosticsDefaultError")({ sym("DiagnosticError") }),
+    sym("LspDiagnosticsDefaultWarning")({ sym("DiagnosticWarn") }),
+    sym("LspDiagnosticsDefaultInformation")({ sym("DiagnosticInfo") }),
+    sym("LspDiagnosticsDefaultHint")({ sym("DiagnosticHint") }),
+
+    sym("DiagnosticErrorAlt")({ fg = colors.red, bg=colors.bg_alt }),
+    sym("DiagnosticWarnAlt")({ fg = colors.orange, bg=colors.bg_alt }),
+    sym("DiagnosticInfoAlt")({ fg = colors.yellow, bg=colors.bg_alt }),
+    sym("DiagnosticHintAlt")({ fg = colors.cyan, bg=colors.bg_alt }),
 
     --LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
     --LspDiagnosticsVirtualTextWarning     { };    -- "Warning" diagnostic virtual text
