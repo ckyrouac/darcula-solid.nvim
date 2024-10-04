@@ -16,6 +16,8 @@ return lush(function(injected_functions)
     sym("NormalFloat")({ fg = colors.fg, bg = colors.bg }),
     sym("NormalNC")({ fg = colors.fg, bg = colors.bg }), -- normal text in non-current windows
 
+    sym("LspInlayHint")({ fg = colors.gray7 }),
+
     sym("FloatBorder")({ fg = colors.blue_mid, bg = colors.bg }),
 
     sym("Comment")({ fg = colors.comment, gui = it }),
@@ -88,7 +90,7 @@ return lush(function(injected_functions)
     -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
     sym("DiagnosticError")({ fg = colors.red }),
     sym("DiagnosticWarn")({ fg = colors.orange }),
-    sym("DiagnosticInfo")({ fg = colors.yellow }),
+    sym("DiagnosticInfo")({ fg = colors.yellow_alt }),
     sym("DiagnosticHint")({ fg = colors.cyan }),
 
     sym("LspDiagnosticsDefaultError")({ sym("DiagnosticError") }),
@@ -98,7 +100,7 @@ return lush(function(injected_functions)
 
     sym("DiagnosticErrorAlt")({ fg = colors.red, bg=colors.bg_alt }),
     sym("DiagnosticWarnAlt")({ fg = colors.orange, bg=colors.bg_alt }),
-    sym("DiagnosticInfoAlt")({ fg = colors.yellow, bg=colors.bg_alt }),
+    sym("DiagnosticInfoAlt")({ fg = colors.yellow_alt, bg=colors.bg_alt }),
     sym("DiagnosticHintAlt")({ fg = colors.cyan, bg=colors.bg_alt }),
 
     --LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
@@ -294,6 +296,8 @@ return lush(function(injected_functions)
     sym("@lsp.typemod.comment.documentation.rust")({ fg = "#5F826B" }),
     sym("@lsp.typemod.generic.attribute.rust")({ fg = colors.yellow_alt2 }),
     sym("@lsp.type.lifetime.rust")({ fg = "#20999D" }),
+    sym("@lsp.typemod.function.static.rust")({ fg = colors.blue, gui = "italic" }),
+    sym("@lsp.type.formatSpecifier.rust")({ fg = colors.orange }),
 
     -- markdown
     sym("@markup.heading.1.markdown")({ fg = colors.magenta }),
@@ -524,5 +528,21 @@ return lush(function(injected_functions)
     sym("CmpItemKindKeyword")({ bg = "NONE", fg = colors.cyan }),
     sym("CmpItemKindProperty")({ link = "CmpItemKindKeyword" }),
     sym("CmpItemKindUnit")({ link = "CmpItemKindKeyword" }),
+
+    -- aerial
+    sym("AerialClass")({ sym("Type") }),
+    sym("AerialClassIcon")({ sym("Special") }),
+    -- sym("AerialFunction")({ sym("Function") }),
+    -- sym("AerialFunctionIcon")( { sym("Function") }),
+
+    sym("AerialFunctionIcon")( { guifg=colors.orange }),
+
+    sym("AerialNormal")({ sym("Normal") }),
+    sym("AerialLine")({ sym("QuickFixLine") }),
+    sym("AerialLineNC")( { guibg=colors.gray }),
+
+    sym("AerialGuide")({ sym("Comment") }),
+    sym("AerialGuide1")({ guifg=colors.red }),
+    sym("AerialGuide2")({ guifg=colors.blue }),
   }
 end)

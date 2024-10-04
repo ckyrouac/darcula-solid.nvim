@@ -39,6 +39,11 @@ return {
   -- extra colors
   dark_magenta = "#402f33",
   gray2 = "#373b39",
+  gray3 = "#313133",
+  gray4 = "#343436",
+  gray5 = "#333336",
+  gray6 = "#353538",
+  gray7 = "#38383b",
 
   -- true colors
   true_color = {
