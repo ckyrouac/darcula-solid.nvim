@@ -538,5 +538,7 @@ return lush(function(injected_functions)
     sym("AerialNormal")({ sym("Normal") }),
     sym("AerialLine")({ fg=colors.true_color.yellow }),
 
+    -- arrow
+    sym("ArrowBookmarkSign")({ fg=colors.yellow_alt, bg=colors.bg }),
   }
 end)
