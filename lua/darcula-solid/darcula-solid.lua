@@ -530,19 +530,13 @@ return lush(function(injected_functions)
     sym("CmpItemKindUnit")({ link = "CmpItemKindKeyword" }),
 
     -- aerial
-    sym("AerialClass")({ sym("Type") }),
-    sym("AerialClassIcon")({ sym("Special") }),
-    -- sym("AerialFunction")({ sym("Function") }),
-    -- sym("AerialFunctionIcon")( { sym("Function") }),
-
-    sym("AerialFunctionIcon")( { guifg=colors.orange }),
+    -- sym("AerialClass")({fg=colors.blue}),
+    sym("AerialClassIcon")({fg=colors.blue}),
+    -- sym("AerialFunction")({fg=colors.orange}),
+    sym("AerialFunctionIcon")({fg=colors.orange}),
 
     sym("AerialNormal")({ sym("Normal") }),
-    sym("AerialLine")({ sym("QuickFixLine") }),
-    sym("AerialLineNC")( { guibg=colors.gray }),
+    sym("AerialLine")({ fg=colors.true_color.yellow }),
 
-    sym("AerialGuide")({ sym("Comment") }),
-    sym("AerialGuide1")({ guifg=colors.red }),
-    sym("AerialGuide2")({ guifg=colors.blue }),
   }
 end)
